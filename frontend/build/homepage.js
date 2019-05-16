@@ -6,8 +6,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import AuthRequest from 'auth-website';
 import * as React from 'react';
-import { getRequest } from './httpRequests';
 export default class HomePage extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -21,11 +21,11 @@ export default class HomePage extends React.PureComponent {
         };
         this.fetchUserInfo = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                let name = (yield getRequest("/api/userinfo")).name;
+                let name = (yield AuthRequest.get("/api/userinfo")).data.name;
                 this.setState(oldState => (Object.assign({}, oldState, { name })));
             }
             catch (err) {
-                if (err.message === "SESSION_EXPIRED") {
+                if (err.response !== undefined && err.response.status === 440) {
                     window.location.href = "/logout";
                     return;
                 }

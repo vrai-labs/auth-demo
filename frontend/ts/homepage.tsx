@@ -1,6 +1,5 @@
+import AuthRequest from 'auth-website';
 import * as React from 'react';
-
-import { getRequest } from './httpRequests';
 
 export default class HomePage extends React.PureComponent<{}, { name: string | undefined }> {
 
@@ -37,13 +36,13 @@ export default class HomePage extends React.PureComponent<{}, { name: string | u
 
     fetchUserInfo = async () => {
         try {
-            let name = (await getRequest("/api/userinfo")).name;
+            let name = (await AuthRequest.get("/api/userinfo")).data.name;
             this.setState(oldState => ({
                 ...oldState,
                 name
             }));
         } catch (err) {
-            if (err.message === "SESSION_EXPIRED") {
+            if (err.response !== undefined && err.response.status === 440) {
                 window.location.href = "/logout";
                 return;
             } else {

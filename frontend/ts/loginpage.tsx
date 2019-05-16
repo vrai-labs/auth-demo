@@ -1,6 +1,5 @@
+import AuthRequest from 'auth-website';
 import * as React from 'react';
-
-import { postRequest } from './httpRequests';
 
 export default class LoginPage extends React.PureComponent<{}, {}> {
     render() {
@@ -19,7 +18,7 @@ export default class LoginPage extends React.PureComponent<{}, {}> {
 
     loginPressed = async () => {
         try {
-            await postRequest("/api/login");
+            await AuthRequest.post("/api/login");
             window.location.href = "/home";
         } catch (err) {
             console.log("error while trying to login!");

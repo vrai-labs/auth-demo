@@ -1,9 +1,14 @@
+import AuthRequest from 'auth-website';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import HomePage from './homepage';
 import LoginPage from './loginpage';
 import LogoutPage from './logoutpage';
 class Router extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        AuthRequest.init("api/refreshtoken", 440);
+    }
     render() {
         let currlocation = window.location.href;
         let splitted = currlocation.split("/");

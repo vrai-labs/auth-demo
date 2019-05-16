@@ -6,14 +6,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import AuthRequest from 'auth-website';
 import * as React from 'react';
-import { postRequest } from './httpRequests';
 export default class LoginPage extends React.PureComponent {
     constructor() {
         super(...arguments);
         this.loginPressed = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                yield postRequest("/api/login");
+                yield AuthRequest.post("/api/login");
                 window.location.href = "/home";
             }
             catch (err) {

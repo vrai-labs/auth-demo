@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "script": "backend/build/index.js",
+      "name": "api",
+      "exec_mode": "cluster",
+      "instances": "1",
+      "watch": true,
+      "merge_logs": true
+    }
+  ]
+}

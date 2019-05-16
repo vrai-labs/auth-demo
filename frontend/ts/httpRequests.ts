@@ -1,3 +1,4 @@
+import { onUnauthorisedResponse } from 'auth-website';
 import axios from 'axios';
 
 const defaultPostRequestConfig = {
@@ -59,13 +60,4 @@ export async function getRequest(url: string) {
             return await response.data;
         }
     }
-}
-
-async function onUnauthorisedResponse(REFRESH_TOKEN_URL: string):
-    Promise<{ result: "SESSION_EXPIRED" } |
-    { result: "SESSION_REFRESHED", apiResponse: any } |
-    { result: "API_ERROR", error: any } |
-    { result: "RETRY" }> {
-    // TODO: get from lib..
-    return { result: "SESSION_EXPIRED" };
 }

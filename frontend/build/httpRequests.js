@@ -6,6 +6,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { onUnauthorisedResponse } from 'auth-website';
 import axios from 'axios';
 const defaultPostRequestConfig = {
     timeout: 20000,
@@ -65,11 +66,5 @@ export function getRequest(url) {
                 return yield response.data;
             }
         }
-    });
-}
-function onUnauthorisedResponse(REFRESH_TOKEN_URL) {
-    return __awaiter(this, void 0, void 0, function* () {
-        // TODO: get from lib..
-        return { result: "SESSION_EXPIRED" };
     });
 }

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const http = require("http");
 const login_1 = require("./login");
+const refreshtoken_1 = require("./refreshtoken");
 const userInfo_1 = require("./userInfo");
 let app = express();
 app.post("/api/login", function (req, res) {
@@ -12,6 +13,11 @@ app.post("/api/login", function (req, res) {
 });
 app.get("/api/userInfo", function (req, res) {
     userInfo_1.default(req, res).catch(err => {
+        res.status(500).send("");
+    });
+});
+app.get("/api/refreshtoken", function (req, res) {
+    refreshtoken_1.default(req, res).catch(err => {
         res.status(500).send("");
     });
 });

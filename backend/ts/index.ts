@@ -3,6 +3,7 @@ import * as http from 'http';
 import * as React from 'react';
 
 import login from './login';
+import refreshtoken from './refreshtoken';
 import userInfo from './userInfo';
 
 let app = express();
@@ -15,6 +16,12 @@ app.post("/api/login", function (req, res) {
 
 app.get("/api/userInfo", function (req, res) {
     userInfo(req, res).catch(err => {
+        res.status(500).send("");
+    });
+});
+
+app.get("/api/refreshtoken", function (req, res) {
+    refreshtoken(req, res).catch(err => {
         res.status(500).send("");
     });
 });

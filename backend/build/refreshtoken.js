@@ -8,12 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-function userInfo(req, res) {
+function refreshtoken(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        res.send(JSON.stringify({
-            name: "Hello world"
-        }));
+        res.send("");
     });
 }
-exports.default = userInfo;
-//# sourceMappingURL=userInfo.js.map
+exports.default = refreshtoken;
+//# sourceMappingURL=refreshtoken.js.map

@@ -11,18 +11,23 @@ import * as React from 'react';
 export default class HomePage extends React.PureComponent {
     constructor(props) {
         super(props);
-        this.getMainView = (name) => {
+        this.getMainView = (name, userId) => {
             // TODO:
             return (React.createElement("div", null,
                 React.createElement("h1", null,
                     "Welcome ",
-                    this.state.name,
-                    "!")));
+                    name,
+                    "!"),
+                "Your userId is: ",
+                userId));
         };
         this.fetchUserInfo = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                let name = (yield AuthRequest.get("/api/userinfo")).data.name;
-                this.setState(oldState => (Object.assign({}, oldState, { name })));
+                let data = (yield AuthRequest.get("/api/userinfo")).data;
+                let name = data.name;
+                let userId = data.userId;
+                this.setState(oldState => (Object.assign({}, oldState, { name,
+                    userId })));
             }
             catch (err) {
                 if (err.response !== undefined && err.response.status === 440) {
@@ -36,14 +41,15 @@ export default class HomePage extends React.PureComponent {
             setTimeout(this.fetchUserInfo, 1000); // so that it keeps on running in the backgroud as a cron job
         });
         this.state = {
-            name: undefined
+            name: undefined,
+            userId: undefined
         };
     }
     render() {
-        if (this.state.name === undefined) {
+        if (this.state.name === undefined || this.state.userId === undefined) {
             return (React.createElement("div", null, "Loading..."));
         }
-        return this.getMainView(this.state.name);
+        return this.getMainView(this.state.name, this.state.userId);
     }
     componentDidMount() {
         this.fetchUserInfo();

@@ -5,20 +5,45 @@ export default class LoginPage extends React.PureComponent<{}, {}> {
     render() {
         return (
             <div>
-                <h1>Welcome to Auth demo</h1>
-                <div>How it works:</div>
-                <div>-> Start by using a non Firefox browser, or by using firefox in private mode.</div>
-                <div>-> Once you login, your session will start which will give your browser a short lived access token (10 seconds validity) and a long lived refresh token (valid for 1 month)</div>
-                <br /><br />
-                <div>Click below to login</div>
-                <button onClick={this.loginPressed}>Login</button>
-            </div>
+                <h1
+                    style={{
+                        color: "#3A7FDD"
+                    }}>
+                    Welcome to Auth demo
+                </h1>
+                <h2>This site demonstrates our solution for session management that can detect token theft.</h2>
+                <br />
+                <h3>How it works:</h3>
+                <li>
+                    You need Firefox for this demo as you will be stealing auth tokens - which is easiest todo on firefox
+                </li>
+                <li>
+                    Start by opening this page in a Firefox private window if it's not done already.
+                </li>
+                <li>
+                    Click on the login button below
+                </li>
+                <li>
+                    Once logged in, follow the steps on the next screen
+                </li>
+                <br /> <br />
+                <button
+                    style={{
+                        color: "#ffffff",
+                        background: "#3A7FDD",
+                        justifyContent: "center", alignItems: "center",
+                        paddingTop: 15, paddingBottom: 15,
+                        paddingLeft: 40, paddingRight: 40,
+                        fontSize: 20, borderRadius: 10,
+                    }}
+                    onClick={this.loginPressed}>Login</button>
+            </div >
         );
     }
 
     loginPressed = async () => {
         try {
-            await AuthRequest.post("/api/login");
+            let response = await AuthRequest.post("/api/login");
             window.location.href = "/home";
         } catch (err) {
             console.log("error while trying to login!");

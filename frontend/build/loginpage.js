@@ -13,7 +13,7 @@ export default class LoginPage extends React.PureComponent {
         super(...arguments);
         this.loginPressed = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                yield AuthRequest.post("/api/login");
+                let response = yield AuthRequest.post("/api/login");
                 window.location.href = "/home";
             }
             catch (err) {
@@ -23,13 +23,26 @@ export default class LoginPage extends React.PureComponent {
     }
     render() {
         return (React.createElement("div", null,
-            React.createElement("h1", null, "Welcome to Auth demo"),
-            React.createElement("div", null, "How it works:"),
-            React.createElement("div", null, "-> Start by using a non Firefox browser, or by using firefox in private mode."),
-            React.createElement("div", null, "-> Once you login, your session will start which will give your browser a short lived access token (10 seconds validity) and a long lived refresh token (valid for 1 month)"),
+            React.createElement("h1", { style: {
+                    color: "#3A7FDD"
+                } }, "Welcome to Auth demo"),
+            React.createElement("h2", null, "This site demonstrates our solution for session management that can detect token theft."),
             React.createElement("br", null),
+            React.createElement("h3", null, "How it works:"),
+            React.createElement("li", null, "You need Firefox for this demo as you will be stealing auth tokens - which is easiest todo on firefox"),
+            React.createElement("li", null, "Start by opening this page in a Firefox private window if it's not done already."),
+            React.createElement("li", null, "Click on the login button below"),
+            React.createElement("li", null, "Once logged in, follow the steps on the next screen"),
             React.createElement("br", null),
-            React.createElement("div", null, "Click below to login"),
-            React.createElement("button", { onClick: this.loginPressed }, "Login")));
+            " ",
+            React.createElement("br", null),
+            React.createElement("button", { style: {
+                    color: "#ffffff",
+                    background: "#3A7FDD",
+                    justifyContent: "center", alignItems: "center",
+                    paddingTop: 15, paddingBottom: 15,
+                    paddingLeft: 40, paddingRight: 40,
+                    fontSize: 20, borderRadius: 10,
+                }, onClick: this.loginPressed }, "Login")));
     }
 }

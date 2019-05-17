@@ -8,11 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Auth = require("auth-node-mysql");
 function userInfo(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        res.send(JSON.stringify({
-            name: "Hello world"
-        }));
+        try {
+            let session = yield Auth.getSession(req, res);
+            let userId = session.getUserId();
+            let metaInfo = yield session.getMetaInfo();
+            let name = metaInfo.name;
+            res.send(JSON.stringify({
+                name, userId
+            }));
+        }
+        catch (err) {
+            res.status(440).send("Session expired");
+        }
     });
 }
 exports.default = userInfo;

@@ -1,33 +1,35 @@
 import AuthRequest from 'auth-website';
 import * as React from 'react';
 
-export default class HomePage extends React.PureComponent<{}, { name: string | undefined }> {
+export default class HomePage extends React.PureComponent<{}, { name: string | undefined, userId: string | undefined }> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            name: undefined
+            name: undefined,
+            userId: undefined
         };
     }
 
-    getMainView = (name: string) => {
+    getMainView = (name: string, userId: string) => {
         // TODO:
         return (
             <div>
-                <h1>Welcome {this.state.name}!</h1>
+                <h1>Welcome {name}!</h1>
+                Your userId is: {userId}
             </div>
         );
     }
 
     render() {
-        if (this.state.name === undefined) {
+        if (this.state.name === undefined || this.state.userId === undefined) {
             return (
                 <div>
                     Loading...
                 </div>
             );
         }
-        return this.getMainView(this.state.name);
+        return this.getMainView(this.state.name, this.state.userId);
     }
 
     componentDidMount() {
@@ -36,10 +38,13 @@ export default class HomePage extends React.PureComponent<{}, { name: string | u
 
     fetchUserInfo = async () => {
         try {
-            let name = (await AuthRequest.get("/api/userinfo")).data.name;
+            let data = (await AuthRequest.get("/api/userinfo")).data;
+            let name = data.name;
+            let userId = data.userId;
             this.setState(oldState => ({
                 ...oldState,
-                name
+                name,
+                userId
             }));
         } catch (err) {
             if (err.response !== undefined && err.response.status === 440) {

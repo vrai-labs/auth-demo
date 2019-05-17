@@ -8,12 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Auth = require("auth-node-mysql");
-function refreshtoken(req, res) {
+function logout(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield Auth.refreshSession(req, res);
+        // TODO:
         res.send("");
     });
 }
-exports.default = refreshtoken;
-//# sourceMappingURL=refreshtoken.js.map
+exports.default = logout;
+//# sourceMappingURL=logout.js.map

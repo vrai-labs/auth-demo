@@ -8,27 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Auth = require("auth-node-mysql");
-function userInfo(req, res) {
+function recentTheft(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        try {
-            let session = yield Auth.getSession(req, res);
-            let userId = session.getUserId();
-            let metaInfo = yield session.getMetaInfo();
-            let name = metaInfo.name;
-            res.send(JSON.stringify({
-                name, userId
-            }));
-        }
-        catch (err) {
-            if (err.errCode !== undefined && err.errCode !== 40002 && err.errCode !== 40001 && err.errCode !== 31001) {
-                res.status(440).send("Session expired");
-            }
-            else {
-                throw err;
-            }
-        }
+        res.send(JSON.stringify(Thefts.list));
     });
 }
-exports.default = userInfo;
-//# sourceMappingURL=userInfo.js.map
+exports.recentTheft = recentTheft;
+class Thefts {
+}
+Thefts.list = [];
+Thefts.add = (userId) => {
+    if (Thefts.list.length >= 20) {
+        Thefts.list.pop();
+    }
+    Thefts.list.unshift({ userId, time: Date.now() });
+};
+exports.Thefts = Thefts;
+//# sourceMappingURL=recenttheft.js.map

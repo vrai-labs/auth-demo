@@ -4,8 +4,7 @@ import * as express from 'express';
 import Names from './names';
 
 export default async function login(req: express.Request, res: express.Response) {
-    // TODO: see if session already exists.. if so, redirect.
-    let session = await Auth.createNewSession(req, res, getRandomString(), {
+    let session = await Auth.createNewSession(res, getRandomString(), {
         name: getRandomName()
     });
     res.send("");

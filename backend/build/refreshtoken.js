@@ -11,8 +11,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Auth = require("auth-node-mysql");
 function refreshtoken(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield Auth.refreshSession(req, res);
-        res.send("");
+        try {
+            yield Auth.refreshSession(req, res);
+            res.send("");
+        }
+        catch (err) {
+            if (err.errCode !== undefined && err.errCode !== 40002 && err.errCode !== 40001 && err.errCode !== 31001) {
+                res.status(440).send("Session expired");
+            }
+            else {
+                throw err;
+            }
+        }
     });
 }
 exports.default = refreshtoken;

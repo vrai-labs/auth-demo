@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import HomePage from './homepage';
 import LoginPage from './loginpage';
-import LogoutPage from './logoutpage';
 class Router extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -18,9 +17,6 @@ class Router extends React.PureComponent {
         }
         else if (path === "home") {
             return (React.createElement(HomePage, null));
-        }
-        else if (path === "logout") {
-            return (React.createElement(LogoutPage, null));
         }
         else {
             return (React.createElement("div", null,

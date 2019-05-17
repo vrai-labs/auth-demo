@@ -11,6 +11,10 @@ export default async function userInfo(req: express.Request, res: express.Respon
             name, userId
         }));
     } catch (err) {
-        res.status(440).send("Session expired");
+        if (err.errCode !== undefined && err.errCode !== 40002 && err.errCode !== 40001 && err.errCode !== 31001) {
+            res.status(440).send("Session expired");
+        } else {
+            throw err;
+        }
     }
 } 

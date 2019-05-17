@@ -4,7 +4,6 @@ import * as ReactDOM from 'react-dom';
 
 import HomePage from './homepage';
 import LoginPage from './loginpage';
-import LogoutPage from './logoutpage';
 
 class Router extends React.PureComponent<{}, {}> {
 
@@ -24,10 +23,6 @@ class Router extends React.PureComponent<{}, {}> {
         } else if (path === "home") {
             return (
                 <HomePage />
-            );
-        } else if (path === "logout") {
-            return (
-                <LogoutPage />
             );
         } else {
             return (

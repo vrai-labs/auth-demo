@@ -6,6 +6,7 @@ import * as React from 'react';
 
 import login from './login';
 import logout from './logout';
+import { recentTheft, Thefts } from './recenttheft';
 import refreshtoken from './refreshtoken';
 import userInfo from './userInfo';
 
@@ -28,12 +29,20 @@ Auth.init({
         accessToken: {
             validity: 10
         }
+    },
+    security: {
+        onTheftDetection
     }
 }).then(() => {
     initRoutesAndServer();
 }).catch((err: any) => {
     console.log("error while initing auth service!", err);
 });
+
+async function onTheftDetection(userId: string, reason: any) {
+    await Auth.revokeAllRefreshTokenForUser(userId);
+    Thefts.add(userId);
+}
 
 function initRoutesAndServer() {
     app.post("/api/login", function (req, res) {
@@ -60,8 +69,24 @@ function initRoutesAndServer() {
         });
     });
 
+    app.get("/api/recenttheft", function (req, res) {
+        recentTheft(req, res).catch(err => {
+            res.status(500).send(err);
+        });
+    });
+
     app.get("/bundle.js", function (req, res, next) {
         res.sendFile("bundle.js", { root: "./" });
+    });
+
+    app.get("/", async function (req, res) {
+        try {
+            let result = await Auth.getSession(req, res);
+            // session exists.. redirect to homepage
+            res.redirect("/home");
+            return;
+        } catch (err) { };
+        res.sendFile("index.html", { root: "./" });
     });
 
     app.use("*", function (req, res, next) {

@@ -12,8 +12,7 @@ const Auth = require("auth-node-mysql");
 const names_1 = require("./names");
 function login(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        // TODO: see if session already exists.. if so, redirect.
-        let session = yield Auth.createNewSession(req, res, getRandomString(), {
+        let session = yield Auth.createNewSession(res, getRandomString(), {
             name: getRandomName()
         });
         res.send("");

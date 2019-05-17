@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const Auth = require("auth-node-mysql");
 const cookieParser = require("cookie-parser");
@@ -6,6 +14,7 @@ const express = require("express");
 const http = require("http");
 const login_1 = require("./login");
 const logout_1 = require("./logout");
+const recenttheft_1 = require("./recenttheft");
 const refreshtoken_1 = require("./refreshtoken");
 const userInfo_1 = require("./userInfo");
 let app = express();
@@ -27,12 +36,21 @@ Auth.init({
         accessToken: {
             validity: 10
         }
+    },
+    security: {
+        onTheftDetection
     }
 }).then(() => {
     initRoutesAndServer();
 }).catch((err) => {
     console.log("error while initing auth service!", err);
 });
+function onTheftDetection(userId, reason) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield Auth.revokeAllRefreshTokenForUser(userId);
+        recenttheft_1.Thefts.add(userId);
+    });
+}
 function initRoutesAndServer() {
     app.post("/api/login", function (req, res) {
         login_1.default(req, res).catch(err => {
@@ -54,8 +72,26 @@ function initRoutesAndServer() {
             res.status(500).send(err);
         });
     });
+    app.get("/api/recenttheft", function (req, res) {
+        recenttheft_1.recentTheft(req, res).catch(err => {
+            res.status(500).send(err);
+        });
+    });
     app.get("/bundle.js", function (req, res, next) {
         res.sendFile("bundle.js", { root: "./" });
+    });
+    app.get("/", function (req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let result = yield Auth.getSession(req, res);
+                // session exists.. redirect to homepage
+                res.redirect("/home");
+                return;
+            }
+            catch (err) { }
+            ;
+            res.sendFile("index.html", { root: "./" });
+        });
     });
     app.use("*", function (req, res, next) {
         res.sendFile("index.html", { root: "./" });

@@ -21,7 +21,7 @@ let app = express();
 app.use(cookieParser()); // TODO: this is necessary! put this in Auth.init?
 Auth.init({
     cookie: {
-        domain: "192.168.29.69",
+        domain: "192.168.1.112",
         secure: false
     },
     mysql: {
@@ -31,23 +31,21 @@ Auth.init({
     },
     tokens: {
         refreshToken: {
-            renewTokenURL: "/api/refreshtoken"
+            renewTokenPath: "/api/refreshtoken"
         },
         accessToken: {
             validity: 10
         }
     },
-    security: {
-        onTheftDetection
-    }
+    onTokenTheftDetection
 }).then(() => {
     initRoutesAndServer();
 }).catch((err) => {
     console.log("error while initing auth service!", err);
 });
-function onTheftDetection(userId, reason) {
+function onTokenTheftDetection(userId, sessionHandle) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield Auth.revokeAllRefreshTokenForUser(userId);
+        yield Auth.revokeSessionUsingSessionHandle(sessionHandle);
         recenttheft_1.Thefts.add(userId);
     });
 }
@@ -84,11 +82,16 @@ function initRoutesAndServer() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let result = yield Auth.getSession(req, res);
-                // session exists.. redirect to homepage
                 res.redirect("/home");
                 return;
             }
-            catch (err) { }
+            catch (err) {
+                if (Auth.Error.isErrorFromAuth(err) &&
+                    err.errType === Auth.Error.TRY_REFRESH_TOKEN) {
+                    res.redirect("/home");
+                    return;
+                }
+            }
             ;
             res.sendFile("index.html", { root: "./" });
         });

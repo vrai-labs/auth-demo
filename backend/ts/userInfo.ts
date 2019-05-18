@@ -5,13 +5,13 @@ export default async function userInfo(req: express.Request, res: express.Respon
     try {
         let session = await Auth.getSession(req, res);
         let userId = session.getUserId();
-        let metaInfo = await session.getMetaInfo();
+        let metaInfo = await session.getSessionData();
         let name = metaInfo.name;
         res.send(JSON.stringify({
             name, userId
         }));
     } catch (err) {
-        if (err.errCode !== undefined && err.errCode !== 40002 && err.errCode !== 40001 && err.errCode !== 31001) {
+        if (Auth.Error.isErrorFromAuth(err) && err.errType !== Auth.Error.GENERAL_ERROR) {
             res.status(440).send("Session expired");
         } else {
             throw err;

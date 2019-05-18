@@ -4,7 +4,7 @@ import * as express from 'express';
 import Names from './names';
 
 export default async function login(req: express.Request, res: express.Response) {
-    let session = await Auth.createNewSession(res, getRandomString(), {
+    let session = await Auth.createNewSession(res, getRandomString(), undefined, {
         name: getRandomName()
     });
     res.send("");

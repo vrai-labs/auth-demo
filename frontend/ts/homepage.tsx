@@ -1,13 +1,17 @@
 import AuthRequest from 'auth-website';
 import * as React from 'react';
 
-export default class HomePage extends React.PureComponent<{}, { name: string | undefined, userId: string | undefined }> {
+export default class HomePage extends React.PureComponent<{}, {
+    name: string | undefined,
+    userId: string | undefined, apiCalls: number
+}> {
 
     constructor(props: any) {
         super(props);
         this.state = {
             name: undefined,
-            userId: undefined
+            userId: undefined,
+            apiCalls: 0
         };
     }
 
@@ -21,6 +25,7 @@ export default class HomePage extends React.PureComponent<{}, { name: string | u
                     Welcome {name}!
                 </h1>
                 <h2>Your userId is: {userId.toUpperCase()}</h2>
+                Number of times userInfo GET API called: {this.state.apiCalls}
                 <br />
                 <h3>Step 1</h3>
                 <ul>
@@ -110,7 +115,8 @@ export default class HomePage extends React.PureComponent<{}, { name: string | u
             this.setState(oldState => ({
                 ...oldState,
                 name,
-                userId
+                userId,
+                apiCalls: oldState.apiCalls + 1
             }));
         } catch (err) {
             if (err.response !== undefined && err.response.status === 440) {

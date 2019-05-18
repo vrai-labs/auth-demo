@@ -12,7 +12,7 @@ const Auth = require("auth-node-mysql");
 const names_1 = require("./names");
 function login(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        let session = yield Auth.createNewSession(res, getRandomString(), {
+        let session = yield Auth.createNewSession(res, getRandomString(), undefined, {
             name: getRandomName()
         });
         res.send("");

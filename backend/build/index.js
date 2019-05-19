@@ -52,27 +52,27 @@ function onTokenTheftDetection(userId, sessionHandle) {
 function initRoutesAndServer() {
     app.post("/api/login", function (req, res) {
         login_1.default(req, res).catch(err => {
-            res.status(500).send(err.message);
+            res.status(500).send(JSON.stringify(err));
         });
     });
     app.get("/api/userInfo", function (req, res) {
         userInfo_1.default(req, res).catch(err => {
-            res.status(500).send(err.message);
+            res.status(500).send(JSON.stringify(err));
         });
     });
     app.post("/api/refreshtoken", function (req, res) {
         refreshtoken_1.default(req, res).catch(err => {
-            res.status(500).send(err.message);
+            res.status(500).send(JSON.stringify(err));
         });
     });
     app.post("/api/logout", function (req, res) {
         logout_1.default(req, res).catch(err => {
-            res.status(500).send(err);
+            res.status(500).send(JSON.stringify(err));
         });
     });
     app.get("/api/recenttheft", function (req, res) {
         recenttheft_1.recentTheft(req, res).catch(err => {
-            res.status(500).send(err);
+            res.status(500).send(JSON.stringify(err));
         });
     });
     app.get("/bundle.js", function (req, res, next) {

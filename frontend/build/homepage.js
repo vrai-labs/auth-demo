@@ -22,8 +22,12 @@ export default class HomePage extends React.PureComponent {
                 React.createElement("h2", null,
                     "Your userId is: ",
                     userId.toUpperCase()),
-                "Number of times userInfo GET API called: ",
-                this.state.apiCalls,
+                React.createElement("div", null,
+                    "Number of times userInfo GET API called: ",
+                    this.state.apiCalls),
+                React.createElement("div", null,
+                    "Page load time: ",
+                    this.state.startTime),
                 React.createElement("br", null),
                 React.createElement("h3", null, "Step 1"),
                 React.createElement("ul", null,
@@ -88,7 +92,8 @@ export default class HomePage extends React.PureComponent {
         this.state = {
             name: undefined,
             userId: undefined,
-            apiCalls: 0
+            apiCalls: 0,
+            startTime: Date.now()
         };
     }
     render() {

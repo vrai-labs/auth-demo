@@ -3,7 +3,8 @@ import * as React from 'react';
 
 export default class HomePage extends React.PureComponent<{}, {
     name: string | undefined,
-    userId: string | undefined, apiCalls: number
+    userId: string | undefined, apiCalls: number,
+    startTime: number
 }> {
 
     constructor(props: any) {
@@ -11,7 +12,8 @@ export default class HomePage extends React.PureComponent<{}, {
         this.state = {
             name: undefined,
             userId: undefined,
-            apiCalls: 0
+            apiCalls: 0,
+            startTime: Date.now()
         };
     }
 
@@ -25,7 +27,8 @@ export default class HomePage extends React.PureComponent<{}, {
                     Welcome {name}!
                 </h1>
                 <h2>Your userId is: {userId.toUpperCase()}</h2>
-                Number of times userInfo GET API called: {this.state.apiCalls}
+                <div>Number of times userInfo GET API called: {this.state.apiCalls}</div>
+                <div>Page load time: {this.state.startTime}</div>
                 <br />
                 <h3>Step 1</h3>
                 <ul>

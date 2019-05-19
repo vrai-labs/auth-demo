@@ -45,31 +45,36 @@ async function onTokenTheftDetection(userId: string, sessionHandle: string) {
 function initRoutesAndServer() {
     app.post("/api/login", function (req, res) {
         login(req, res).catch(err => {
-            res.status(500).send(JSON.stringify(err));
+            console.log(err);
+            res.status(500).send("");
         });
     });
 
     app.get("/api/userInfo", function (req, res) {
         userInfo(req, res).catch(err => {
-            res.status(500).send(JSON.stringify(err));
+            console.log(err);
+            res.status(500).send("");
         });
     });
 
     app.post("/api/refreshtoken", function (req, res) {
         refreshtoken(req, res).catch(err => {
-            res.status(500).send(JSON.stringify(err));
+            console.log(err);
+            res.status(500).send("");
         });
     });
 
     app.post("/api/logout", function (req, res) {
         logout(req, res).catch(err => {
-            res.status(500).send(JSON.stringify(err));
+            console.log(err);
+            res.status(500).send("");
         });
     });
 
     app.get("/api/recenttheft", function (req, res) {
         recentTheft(req, res).catch(err => {
-            res.status(500).send(JSON.stringify(err));
+            console.log(err);
+            res.status(500).send("");
         });
     });
 

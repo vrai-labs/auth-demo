@@ -2,6 +2,10 @@ import AuthRequest from 'auth-website';
 import moment from 'moment';
 import * as React from 'react';
 
+declare const InstallTrigger: any;
+
+const IS_FIREFOX = typeof InstallTrigger !== 'undefined';
+
 // TODO: show stolen tokens so far!
 export default class LoginPage extends React.PureComponent<{}, {
     thefts: { userId: string, time: number }[] | undefined
@@ -35,6 +39,13 @@ export default class LoginPage extends React.PureComponent<{}, {
     }
 
     render() {
+        if (!IS_FIREFOX) {
+            return (
+                <div>
+                    Please open this page on Firefox.
+                </div>
+            );
+        }
         return (
             <div>
                 <h1

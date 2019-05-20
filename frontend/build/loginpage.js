@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import AuthRequest from 'auth-website';
 import moment from 'moment';
 import * as React from 'react';
+const IS_FIREFOX = typeof InstallTrigger !== 'undefined';
 // TODO: show stolen tokens so far!
 export default class LoginPage extends React.PureComponent {
     constructor(props) {
@@ -47,6 +48,9 @@ export default class LoginPage extends React.PureComponent {
         };
     }
     render() {
+        if (!IS_FIREFOX) {
+            return (React.createElement("div", null, "Please open this page on Firefox."));
+        }
         return (React.createElement("div", null,
             React.createElement("h1", { style: {
                     color: "#3A7FDD"

@@ -59,17 +59,14 @@ export default class LoginPage extends React.PureComponent<{}, {
                 <h3>How it works:</h3>
                 <ul>
                     <li>
-                        You need Firefox for this demo as you will be stealing auth tokens - which is easiest todo on firefox
-                </li>
-                    <li>
-                        Start by opening this page in a Firefox (non private window).
-                </li>
+                        Start by opening this page on a non private window.
+                    </li>
                     <li>
                         Click on the login button below
-                </li>
+                    </li>
                     <li>
                         Once logged in, follow the steps on the next screen
-                </li>
+                    </li>
                 </ul>
                 <br /> <br />
                 <button

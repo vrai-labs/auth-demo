@@ -1,4 +1,4 @@
-import * as Auth from 'auth-node-mysql';
+import * as Auth from 'auth-node-mysql-ref-jwt';
 import * as express from 'express';
 
 export default async function userInfo(req: express.Request, res: express.Response) {

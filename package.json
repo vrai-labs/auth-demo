@@ -9,16 +9,13 @@
   "license": "ISC",
   "dependencies": {
     "axios": "0.18.0",
-    "browser-tabs-lock": "1.1.4",
     "cookie-parser": "1.4.4",
-    "cron": "1.7.1",
     "express": "4.16.4",
     "moment": "2.24.0",
-    "mysql": "2.17.1",
     "react": "16.4.0",
     "react-dom": "16.4.0",
-    "uuid": "3.3.2",
-    "validator": "10.11.0"
+    "auth-website": "0.0.1",
+    "auth-node-mysql-ref-jwt": "0.0.4"
   },
   "devDependencies": {
     "@types/axios": "0.14.0",

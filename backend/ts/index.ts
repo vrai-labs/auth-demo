@@ -1,4 +1,4 @@
-import * as Auth from 'auth-node-mysql';
+import * as Auth from 'auth-node-mysql-ref-jwt';
 import * as cookieParser from 'cookie-parser';
 import * as express from 'express';
 import * as http from 'http';

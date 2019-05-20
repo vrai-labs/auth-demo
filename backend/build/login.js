@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Auth = require("auth-node-mysql");
+const Auth = require("auth-node-mysql-ref-jwt");
 const names_1 = require("./names");
 function login(req, res) {
     return __awaiter(this, void 0, void 0, function* () {

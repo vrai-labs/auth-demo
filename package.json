@@ -14,8 +14,8 @@
     "moment": "2.24.0",
     "react": "16.4.0",
     "react-dom": "16.4.0",
-    "auth-website": "1.0.0",
-    "auth-node-mysql-ref-jwt": "1.0.0"
+    "auth-website": "^1.0.0",
+    "auth-node-mysql-ref-jwt": "^1.0.0"
   },
   "devDependencies": {
     "@types/axios": "0.14.0",

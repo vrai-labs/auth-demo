@@ -27,8 +27,6 @@ export default class HomePage extends React.PureComponent<{}, {
                     Welcome {name}!
                 </h1>
                 <h2>Your userId is: {userId.toUpperCase()}</h2>
-                <div>Number of times userInfo GET API called: {this.state.apiCalls}</div>
-                <div>Page load time: {this.state.startTime}</div>
                 <br />
                 <h3>Step 1</h3>
                 <ul>

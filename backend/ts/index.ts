@@ -14,7 +14,7 @@ let app = express();
 app.use(cookieParser());    // TODO: this is necessary! put this in Auth.init?
 Auth.init({
     cookie: {
-        domain: "192.168.1.112",
+        domain: "192.168.29.69",
         secure: false
     },
     mysql: {

@@ -45,7 +45,7 @@ export default class HomePage extends React.PureComponent<{}, {
                         Copy the value associated with the cookie: sRefreshToken
                     </li>
                     <li>
-                        Open a new Private window (not a new tab) in firefox and go to TODO put domain here.
+                        Open a new Private window (not a new tab) in firefox and go to http://192.168.29.69:9000
                     </li>
                     <li>
                         Click on login in that page and then follow Step 2

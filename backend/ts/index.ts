@@ -102,5 +102,5 @@ function initRoutesAndServer() {
     });
 
     let server = http.createServer(app);
-    server.listen(9000, "0.0.0.0");
+    server.listen(80, "0.0.0.0");
 }

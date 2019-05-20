@@ -29,7 +29,7 @@ export default class HomePage extends React.PureComponent {
                     React.createElement("li", null, "Right click on this page and select \"Inspect Element\""),
                     React.createElement("li", null, "Click on the Storage tab"),
                     React.createElement("li", null, "Copy the value associated with the cookie: sRefreshToken"),
-                    React.createElement("li", null, "Open a new Private window (not a new tab) in firefox and go to http://192.168.29.69:9000"),
+                    React.createElement("li", null, "Open a new Private window (not a new tab) in firefox and go to http://13.126.202.201"),
                     React.createElement("li", null, "Click on login in that page and then follow Step 2")),
                 React.createElement("br", null),
                 React.createElement("h3", null, "Step 2"),

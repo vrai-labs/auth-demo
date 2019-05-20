@@ -57,17 +57,7 @@ export default class LoginPage extends React.PureComponent<{}, {
                 <h2>This site demonstrates our solution for session management that can detect token theft.</h2>
                 <br />
                 <h3>How it works:</h3>
-                <ul>
-                    <li>
-                        Start by opening this page on a non private window.
-                    </li>
-                    <li>
-                        Click on the login button below
-                    </li>
-                    <li>
-                        Once logged in, follow the steps on the next screen
-                    </li>
-                </ul>
+                Click on the login button below and follow Step 1 and 2
                 <br /> <br />
                 <button
                     style={{

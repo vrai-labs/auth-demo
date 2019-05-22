@@ -6,9 +6,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import AuthRequest from 'auth-website';
 import moment from 'moment';
 import * as React from 'react';
+import SuperTokensRequest from 'supertokens-website';
 const IS_FIREFOX = typeof InstallTrigger !== 'undefined';
 // TODO: show stolen tokens so far!
 export default class LoginPage extends React.PureComponent {
@@ -27,7 +27,7 @@ export default class LoginPage extends React.PureComponent {
         };
         this.fetchRecentThefts = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                let thefts = (yield AuthRequest.get("/api/recenttheft")).data;
+                let thefts = (yield SuperTokensRequest.get("/api/recenttheft")).data;
                 this.setState(oldState => (Object.assign({}, oldState, { thefts })));
             }
             catch (err) {
@@ -36,7 +36,7 @@ export default class LoginPage extends React.PureComponent {
         });
         this.loginPressed = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                let response = yield AuthRequest.post("/api/login");
+                let response = yield SuperTokensRequest.post("/api/login");
                 window.location.href = "/home";
             }
             catch (err) {

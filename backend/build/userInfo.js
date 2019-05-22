@@ -8,11 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Auth = require("auth-node-mysql-ref-jwt");
+const SuperTokens = require("supertokens-node-mysql-ref-jwt");
 function userInfo(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let session = yield Auth.getSession(req, res);
+            let session = yield SuperTokens.getSession(req, res);
             let userId = session.getUserId();
             let metaInfo = yield session.getSessionData();
             let name = metaInfo.name;
@@ -21,7 +21,7 @@ function userInfo(req, res) {
             }));
         }
         catch (err) {
-            if (Auth.Error.isErrorFromAuth(err) && err.errType !== Auth.Error.GENERAL_ERROR) {
+            if (SuperTokens.Error.isErrorFromAuth(err) && err.errType !== SuperTokens.Error.GENERAL_ERROR) {
                 res.status(440).send("Session expired");
             }
             else {

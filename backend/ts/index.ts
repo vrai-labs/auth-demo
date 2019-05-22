@@ -1,8 +1,8 @@
-import * as Auth from 'auth-node-mysql-ref-jwt';
 import * as cookieParser from 'cookie-parser';
 import * as express from 'express';
 import * as http from 'http';
 import * as React from 'react';
+import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
 
 import login from './login';
 import logout from './logout';
@@ -12,7 +12,7 @@ import userInfo from './userInfo';
 
 let app = express();
 app.use(cookieParser());    // TODO: this is necessary! put this in Auth.init?
-Auth.init({
+SuperTokens.init({
     cookie: {
         domain: "supertokens.io",
         secure: false
@@ -38,7 +38,7 @@ Auth.init({
 });
 
 async function onTokenTheftDetection(userId: string, sessionHandle: string) {
-    await Auth.revokeSessionUsingSessionHandle(sessionHandle);
+    await SuperTokens.revokeSessionUsingSessionHandle(sessionHandle);
     Thefts.add(userId);
 }
 
@@ -84,12 +84,12 @@ function initRoutesAndServer() {
 
     app.get("/", async function (req, res) {
         try {
-            let result = await Auth.getSession(req, res);
+            let result = await SuperTokens.getSession(req, res);
             res.redirect("/home");
             return;
         } catch (err) {
-            if (Auth.Error.isErrorFromAuth(err) &&
-                err.errType === Auth.Error.TRY_REFRESH_TOKEN) {
+            if (SuperTokens.Error.isErrorFromAuth(err) &&
+                err.errType === SuperTokens.Error.TRY_REFRESH_TOKEN) {
                 res.redirect("/home");
                 return;
             }

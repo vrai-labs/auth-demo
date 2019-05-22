@@ -1,10 +1,10 @@
-import * as Auth from 'auth-node-mysql-ref-jwt';
 import * as express from 'express';
+import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
 
 import Names from './names';
 
 export default async function login(req: express.Request, res: express.Response) {
-    let session = await Auth.createNewSession(res, getRandomString(), undefined, {
+    let session = await SuperTokens.createNewSession(res, getRandomString(), undefined, {
         name: getRandomName()
     });
     res.send("");

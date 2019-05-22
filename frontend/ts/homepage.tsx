@@ -1,5 +1,5 @@
-import AuthRequest from 'auth-website';
 import * as React from 'react';
+import SuperTokensRequest from 'supertokens-website';
 
 export default class HomePage extends React.PureComponent<{}, {
     name: string | undefined,
@@ -97,7 +97,7 @@ export default class HomePage extends React.PureComponent<{}, {
 
     logoutPressed = async () => {
         try {
-            await AuthRequest.post("/api/logout");
+            await SuperTokensRequest.post("/api/logout");
             window.location.href = "/";
         } catch (err) {
             if (err.response !== undefined && err.response.status === 440) {
@@ -110,7 +110,7 @@ export default class HomePage extends React.PureComponent<{}, {
 
     fetchUserInfo = async () => {
         try {
-            let data = (await AuthRequest.get("/api/userinfo")).data;
+            let data = (await SuperTokensRequest.get("/api/userinfo")).data;
             let name = data.name;
             let userId = data.userId;
             this.setState(oldState => ({
@@ -127,7 +127,7 @@ export default class HomePage extends React.PureComponent<{}, {
                 console.log("error while fetching user data");
             }
         }
-        setTimeout(this.fetchUserInfo, 1000);   // so that it keeps on running in the backgroud as a cron job
+        setTimeout(this.fetchUserInfo, 1000);   // so that it keeps on running in the backgroud
     }
 }
 

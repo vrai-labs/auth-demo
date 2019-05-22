@@ -1,6 +1,6 @@
-import AuthRequest from 'auth-website';
 import moment from 'moment';
 import * as React from 'react';
+import SuperTokensRequest from 'supertokens-website';
 
 declare const InstallTrigger: any;
 
@@ -81,7 +81,7 @@ export default class LoginPage extends React.PureComponent<{}, {
 
     fetchRecentThefts = async () => {
         try {
-            let thefts = (await AuthRequest.get("/api/recenttheft")).data;
+            let thefts = (await SuperTokensRequest.get("/api/recenttheft")).data;
             this.setState(oldState => ({
                 ...oldState,
                 thefts
@@ -93,7 +93,7 @@ export default class LoginPage extends React.PureComponent<{}, {
 
     loginPressed = async () => {
         try {
-            let response = await AuthRequest.post("/api/login");
+            let response = await SuperTokensRequest.post("/api/login");
             window.location.href = "/home";
         } catch (err) {
             console.log("error while trying to login!");

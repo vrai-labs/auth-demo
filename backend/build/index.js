@@ -8,10 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Auth = require("auth-node-mysql-ref-jwt");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const http = require("http");
+const SuperTokens = require("supertokens-node-mysql-ref-jwt");
 const login_1 = require("./login");
 const logout_1 = require("./logout");
 const recenttheft_1 = require("./recenttheft");
@@ -19,7 +19,7 @@ const refreshtoken_1 = require("./refreshtoken");
 const userInfo_1 = require("./userInfo");
 let app = express();
 app.use(cookieParser()); // TODO: this is necessary! put this in Auth.init?
-Auth.init({
+SuperTokens.init({
     cookie: {
         domain: "supertokens.io",
         secure: false
@@ -45,7 +45,7 @@ Auth.init({
 });
 function onTokenTheftDetection(userId, sessionHandle) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield Auth.revokeSessionUsingSessionHandle(sessionHandle);
+        yield SuperTokens.revokeSessionUsingSessionHandle(sessionHandle);
         recenttheft_1.Thefts.add(userId);
     });
 }
@@ -86,13 +86,13 @@ function initRoutesAndServer() {
     app.get("/", function (req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let result = yield Auth.getSession(req, res);
+                let result = yield SuperTokens.getSession(req, res);
                 res.redirect("/home");
                 return;
             }
             catch (err) {
-                if (Auth.Error.isErrorFromAuth(err) &&
-                    err.errType === Auth.Error.TRY_REFRESH_TOKEN) {
+                if (SuperTokens.Error.isErrorFromAuth(err) &&
+                    err.errType === SuperTokens.Error.TRY_REFRESH_TOKEN) {
                     res.redirect("/home");
                     return;
                 }

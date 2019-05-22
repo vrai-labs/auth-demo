@@ -1,6 +1,6 @@
-import AuthRequest from 'auth-website';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import SuperTokensRequest from 'supertokens-website';
 
 import HomePage from './homepage';
 import LoginPage from './loginpage';
@@ -9,7 +9,7 @@ class Router extends React.PureComponent<{}, {}> {
 
     constructor(props: any) {
         super(props);
-        AuthRequest.init("/api/refreshtoken", 440);
+        SuperTokensRequest.init("/api/refreshtoken", 440);
     }
 
     render() {

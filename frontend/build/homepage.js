@@ -6,8 +6,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import AuthRequest from 'auth-website';
 import * as React from 'react';
+import SuperTokensRequest from 'supertokens-website';
 export default class HomePage extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -52,7 +52,7 @@ export default class HomePage extends React.PureComponent {
         };
         this.logoutPressed = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                yield AuthRequest.post("/api/logout");
+                yield SuperTokensRequest.post("/api/logout");
                 window.location.href = "/";
             }
             catch (err) {
@@ -66,7 +66,7 @@ export default class HomePage extends React.PureComponent {
         });
         this.fetchUserInfo = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                let data = (yield AuthRequest.get("/api/userinfo")).data;
+                let data = (yield SuperTokensRequest.get("/api/userinfo")).data;
                 let name = data.name;
                 let userId = data.userId;
                 this.setState(oldState => (Object.assign({}, oldState, { name,
@@ -81,7 +81,7 @@ export default class HomePage extends React.PureComponent {
                     console.log("error while fetching user data");
                 }
             }
-            setTimeout(this.fetchUserInfo, 1000); // so that it keeps on running in the backgroud as a cron job
+            setTimeout(this.fetchUserInfo, 1000); // so that it keeps on running in the backgroud
         });
         this.state = {
             name: undefined,

@@ -8,11 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Auth = require("auth-node-mysql-ref-jwt");
+const SuperTokens = require("supertokens-node-mysql-ref-jwt");
 const names_1 = require("./names");
 function login(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        let session = yield Auth.createNewSession(res, getRandomString(), undefined, {
+        let session = yield SuperTokens.createNewSession(res, getRandomString(), undefined, {
             name: getRandomName()
         });
         res.send("");

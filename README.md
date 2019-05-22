@@ -1,4 +1,6 @@
-# SuperTokens Demo
+![SuperTokens banner](https://github.com/supertokens/auth-node-mysql-ref-jwt/blob/master/images/github%20cover.png)
+
+# Demo
 
 This demo demonstrates the behaviour of SuperTokens session management solution in case of auth token theft.
 

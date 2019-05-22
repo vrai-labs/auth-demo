@@ -1,12 +1,12 @@
-![SuperTokens banner](https://github.com/supertokens/auth-node-mysql-ref-jwt/blob/master/images/github%20cover.png)
+![SuperTokens banner](https://github.com/supertokens/supertokens-node-mysql-ref-jwt/blob/master/images/github%20cover.png)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/supertokens/auth-node-mysql-ref-jwt/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/supertokens/supertokens-node-mysql-ref-jwt/blob/master/LICENSE)
 
 # Demo
 
 This demo demonstrates the behaviour of SuperTokens session management solution in case of auth token theft.
 
-This project uses [auth-node-mysql-ref-jwt](https://github.com/supertokens/auth-node-mysql-ref-jwt) and [auth-website](https://github.com/supertokens/auth-website) packages for implementing sessions.
+This project uses [supertokens-node-mysql-ref-jwt](https://github.com/supertokens/supertokens-node-mysql-ref-jwt) and [supertokens-website](https://github.com/supertokens/supertokens-website) packages for implementing sessions.
 
 You can access the demo via: http://supertokens.io/ (Only works on Firefox)
 

@@ -9,7 +9,7 @@ class Router extends React.PureComponent<{}, {}> {
 
     constructor(props: any) {
         super(props);
-        AuthRequest.init("api/refreshtoken", 440);
+        AuthRequest.init("/api/refreshtoken", 440);
     }
 
     render() {

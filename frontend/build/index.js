@@ -6,7 +6,7 @@ import LoginPage from './loginpage';
 class Router extends React.PureComponent {
     constructor(props) {
         super(props);
-        AuthRequest.init("api/refreshtoken", 440);
+        AuthRequest.init("/api/refreshtoken", 440);
     }
     render() {
         let currlocation = window.location.href;

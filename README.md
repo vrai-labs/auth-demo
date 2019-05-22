@@ -13,7 +13,4 @@ NOTE:
 - The access token expiry time is 10 seconds for the purpose of this demo, but in a production system, you should set it to at least 15 mins.
 
 ## Authors
-- Written with :heart: by the folks at SuperTokens. We are a startup passionate about security and solving software challenges in a way that's helpful for everyone! Please feel free to give us feedback at team@supertokens.io, until our website is ready :grinning:
-
-## License
-MIT license. For more information, please see the license tab on this repo.
+Written with :heart: by the folks at SuperTokens. We are a startup passionate about security and solving software challenges in a way that's helpful for everyone! Please feel free to give us feedback at team@supertokens.io, until our website is ready :grinning:

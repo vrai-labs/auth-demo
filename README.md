@@ -1,5 +1,7 @@
 ![SuperTokens banner](https://github.com/supertokens/auth-node-mysql-ref-jwt/blob/master/images/github%20cover.png)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/supertokens/auth-node-mysql-ref-jwt/blob/master/LICENSE)
+
 # Demo
 
 This demo demonstrates the behaviour of SuperTokens session management solution in case of auth token theft.

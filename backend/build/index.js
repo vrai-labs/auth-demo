@@ -18,10 +18,10 @@ const recenttheft_1 = require("./recenttheft");
 const refreshtoken_1 = require("./refreshtoken");
 const userInfo_1 = require("./userInfo");
 let app = express();
-app.use(cookieParser()); // TODO: this is necessary! put this in Auth.init?
+app.use(cookieParser());
 SuperTokens.init({
     cookie: {
-        domain: "supertokens.io",
+        domain: "192.168.29.69",
         secure: false
     },
     mysql: {

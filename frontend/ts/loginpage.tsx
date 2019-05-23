@@ -47,48 +47,88 @@ export default class LoginPage extends React.PureComponent<{}, {
             );
         }
         return (
-            <div>
-                <h1
+            <div style={{
+                background: "#000000",
+                height: "100%"
+            }}>
+                <div
                     style={{
-                        color: "#3A7FDD"
+                        background: "#000000",
+                        paddingLeft: "16px", paddingRight: "16px",
+                        paddingTop: "10px",
+                        width: "50%"
                     }}>
-                    Welcome to Auth demo
-                </h1>
-                <h2>This site demonstrates our solution for session management that can detect token theft.</h2>
-                <br />
-                <h3>How it works:</h3>
-                Click on the login button below and follow Step 1 and 2
-                <br /> <br />
-                <button
-                    style={{
+                    <div
+                        style={{
+                            background: "#0000ff", paddingTop: "5px", paddingBottom: "5px"
+                        }}>
+                        <img
+                            src={"https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/Artboard%20123%402x.png"}
+                            style={{
+                                height: "60px"
+                            }} />
+                    </div>
+                    <div style={{ height: "10px" }} />
+                    <div style={{
                         color: "#ffffff",
-                        background: "#3A7FDD",
-                        justifyContent: "center", alignItems: "center",
-                        paddingTop: 15, paddingBottom: 15,
-                        paddingLeft: 40, paddingRight: 40,
-                        fontSize: 20, borderRadius: 10,
-                    }}
-                    onClick={this.loginPressed}>Login</button>
-                {this.state.thefts === undefined || this.state.thefts.length === 0 ? null :
-                    this.getTheftView(this.state.thefts)}
-            </div >
+                        fontSize: "20px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    }}><b>This is a demo that demonstrates a session management library capable of detecting token theft!</b></div>
+                    <div style={{ height: "20px" }} />
+                    <div style={{
+                        color: "#bc0d0d",
+                        fontSize: "17px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    }}>Open this page on two Firefox windows (not tabs) - <span style={{ color: "#ff0000" }}><b>one private, and one non-private</b></span></div>
+                    <div style={{ height: "60px" }} />
+                    <div style={{
+                        color: "#ffffff",
+                        fontSize: "25px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    }}>If this is the non-private window:</div>
+                    <div style={{
+                        color: "#ffffff",
+                        fontSize: "17px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    }}>You are now the innocent victim <span style={{ color: "#00ff00" }}>'_'</span> <br />Start by logging in to your account by clicking below:</div>
+                    <div style={{ height: 5 }} />
+                    <button
+                        style={{
+                            color: "#000000",
+                            background: "#ffffff",
+                            justifyContent: "center", alignItems: "center",
+                            paddingTop: 5, paddingBottom: 5,
+                            paddingLeft: 5, paddingRight: 5,
+                            fontSize: 17,
+                            fontFamily: 'Share Tech, sans-serif'
+                        }}
+                        onClick={this.loginPressed}>Login as innocent victim</button>
+                    <div style={{ height: "40px" }} />
+                    <div style={{
+                        color: "#ffffff",
+                        fontSize: "25px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    }}>If this is the private window:</div>
+                    <div style={{
+                        color: "#ffffff",
+                        fontSize: "17px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    }}>You are now the evil ATTACKER <span style={{ color: "#ff0000" }}>'_'</span> <br />Click below to start the attack:</div>
+                    <div style={{ height: 5 }} />
+                    <button
+                        style={{
+                            color: "#000000",
+                            background: "#ffffff",
+                            justifyContent: "center", alignItems: "center",
+                            paddingTop: 5, paddingBottom: 5,
+                            paddingLeft: 5, paddingRight: 5,
+                            fontSize: 17,
+                            fontFamily: 'Share Tech, sans-serif'
+                        }}
+                        onClick={this.loginPressed}>Login as evil ATTACKER</button>
+                </div>
+            </div>
         );
-    }
-
-    componentDidMount() {
-        this.fetchRecentThefts();
-    }
-
-    fetchRecentThefts = async () => {
-        try {
-            let thefts = (await SuperTokensRequest.get("/api/recenttheft")).data;
-            this.setState(oldState => ({
-                ...oldState,
-                thefts
-            }));
-        } catch (err) {
-            console.log("error while fetching recent thefts!");
-        }
     }
 
     loginPressed = async () => {

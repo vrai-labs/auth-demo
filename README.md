@@ -8,13 +8,19 @@ This demo demonstrates the behaviour of SuperTokens session management solution 
 
 This project uses [supertokens-node-mysql-ref-jwt](https://github.com/supertokens/supertokens-node-mysql-ref-jwt) as the backend and [supertokens-website](https://github.com/supertokens/supertokens-website) as the frontend for implementing session management.
 
-You can see the demo at http://supertokens.io (Only works on Firefox)
+You can see the live demo at http://supertokens.io (Only works on Firefox)
 
 NOTE:
 - We use HTTP for this demo and send cookies with ``secure`` parameter set to ``false``. But in production environment, it is recommended to always use https and keep ``secure`` parameter set to ``true``.
 - The access token expiry time is 10 seconds for the purpose of this demo, but in a production environment, it is recommended to set it to at least 15 mins.
 
-## Demo code setup
+## Run it yourself!
+If you want to run the demo offline and test it yourself, it's really easy to get started. You just need to install the package for backend which is [supertokens-node-mysql-ref-jwt](https://www.npmjs.com/package/supertokens-node-mysql-ref-jwt), the frontend which is provided by [supertokens-website](https://www.npmjs.com/package/supertokens-website) and [cookie-parser](https://www.npmjs.com/package/cookie-parser) package. You can download all three by doing:
+```bash
+npm i supertokens-node-mysql-ref-jwt
+npm i supertokens-website
+npm i cookie-parser
+```
 ### Backend - 6 steps to setup!
 1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router. Initialisation is done using:
    ```js

@@ -75,7 +75,7 @@ npm i --save cookie-parser
    ```js
    SuperTokens.init({
      ...configs,
-     onTokenTheftDetection: (userId: string, sessionHandle: string) {
+     onTokenTheftDetection: (userId: string, sessionHandle: string) => {
        // logout user's all devices, or just the devices that use this sessionHandle.
      }
    });

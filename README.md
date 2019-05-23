@@ -56,6 +56,7 @@ npm i --save cookie-parser
 5) There is a special API endpoint to refresh the session (refreshtoken.ts):
    ```js
    await SuperTokens.refreshSession(req, res);
+   // send status 200 to client.
    ```
 6) If the user accessing the login page has a session which is alive already, then we redirect to the homepage (see in index.ts):
    ```js

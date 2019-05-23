@@ -4,9 +4,9 @@
 
 # Demo
 
-This demo demonstrates the behaviour of SuperTokens session management solution in case of auth token theft.
+This demonstrates the behaviour of SuperTokens session management solution in case of auth token theft.
 
-This project uses [supertokens-node-mysql-ref-jwt](https://github.com/supertokens/supertokens-node-mysql-ref-jwt) as the backend and [supertokens-website](https://github.com/supertokens/supertokens-website) as the frontend for implementing session management.
+This uses [supertokens-node-mysql-ref-jwt](https://github.com/supertokens/supertokens-node-mysql-ref-jwt) as the backend and [supertokens-website](https://github.com/supertokens/supertokens-website) as the frontend for implementing session management.
 
 You can see the live demo at http://supertokens.io (Only works on Firefox)
 

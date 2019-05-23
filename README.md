@@ -20,7 +20,7 @@ npm i --save supertokens-node-mysql-ref-jwt
 npm i --save supertokens-website
 npm i --save cookie-parser
 ```
-### Backend - 6 steps to setup!
+### Backend - 7 steps to setup!
 1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router:
    ```js
    import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
@@ -69,6 +69,15 @@ npm i --save cookie-parser
        }
      };
      // send login page as we know a session is not alive anymore
+   });
+   ```
+7) Detecting token theft (index.ts):
+   ```js
+   SuperTokens.init({
+     ...configs,
+     onTokenTheftDetection: (userId: string, sessionHandle: string) {
+       // logout user's all devices, or just the devices that use this sessionHandle.
+     }
    });
    ```
 ### Frontend - 4 steps to setup!

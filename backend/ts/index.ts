@@ -11,7 +11,7 @@ import refreshtoken from './refreshtoken';
 import userInfo from './userInfo';
 
 let app = express();
-app.use(cookieParser());    // TODO: this is necessary! put this in Auth.init?
+app.use(cookieParser());
 SuperTokens.init({
     cookie: {
         domain: "supertokens.io",

@@ -1,4 +1,4 @@
-![SuperTokens banner](https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/github%20cover.png)
+![SuperTokens banner](https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/Artboard%20%E2%80%93%2027%402x.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/supertokens/auth-demo/blob/master/LICENSE)
 
@@ -14,17 +14,20 @@ NOTE:
 - We use HTTP for this demo and send cookies with ``secure`` parameter set to ``false``. But in production environment, it is recommended to always use https and keep ``secure`` parameter set to ``true``.
 - The access token expiry time is 10 seconds for the purpose of this demo, but in a production environment, it is recommended to set it to at least 15 mins.
 
-## Run it yourself!
-If you want to run the demo offline and test it yourself, it's really easy to get started. You just need to install the package for backend which is [supertokens-node-mysql-ref-jwt](https://www.npmjs.com/package/supertokens-node-mysql-ref-jwt), the frontend which is provided by [supertokens-website](https://www.npmjs.com/package/supertokens-website) and [cookie-parser](https://www.npmjs.com/package/cookie-parser) package. You can download all three by doing:
+## Code setup
 ```bash
-npm i supertokens-node-mysql-ref-jwt
-npm i supertokens-website
-npm i cookie-parser
+npm i --save supertokens-node-mysql-ref-jwt
+npm i --save supertokens-website
+npm i --save cookie-parser
 ```
 ### Backend - 6 steps to setup!
-1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router. Initialisation is done using:
+1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router:
    ```js
    import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
+   import * as cookieParser from 'cookie-parser';
+   
+   let app = express();
+   app.use(cookieParser());
    SuperTokens.init(...).then(() => {
      // setup routers..
    })

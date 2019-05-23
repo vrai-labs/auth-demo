@@ -17,51 +17,51 @@ NOTE:
 ## Demo code explained
 ### Backend - 6 steps to setup!
 1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router. Initialisation is done using:
-```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
-SuperTokens.init(...).then(() => {
-  // setup routers..
-})
-```
+   ```js
+   import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
+   SuperTokens.init(...).then(() => {
+     // setup routers..
+   })
+   ```
 2) The login API (login.ts) creates a new session in the following way:
-```js
-// we generate a random userId for purpose of this demo
-// the jwt payload is undefined since we don't need this for the demo
-// the session data stores the name of this user.
-let session = await SuperTokens.createNewSession(res, getRandomString(), undefined, {
-        name: getRandomName()
-    });
-```
+   ```js
+   // we generate a random userId for purpose of this demo
+   // the jwt payload is undefined since we don't need this for the demo
+   // the session data stores the name of this user.
+   let session = await SuperTokens.createNewSession(res, getRandomString(), undefined, {
+           name: getRandomName()
+       });
+   ```
 3) The userInfo API (userInfo.ts) uses the session to get the current user's name and userId:
-```js
-let session = await SuperTokens.getSession(req, res);
-let userId = session.getUserId();
-let metaInfo = await session.getSessionData();
-let name = metaInfo.name
-```
+   ```js
+   let session = await SuperTokens.getSession(req, res);
+   let userId = session.getUserId();
+   let metaInfo = await session.getSessionData();
+   let name = metaInfo.name
+   ```
 4) The logout API (logout.ts) destroys the current session:
-```js
-let session = await SuperTokens.getSession(req, res);
-await session.revokeSession();
-```
+   ```js
+   let session = await SuperTokens.getSession(req, res);
+   await session.revokeSession();
+   ```
 5) There is a special API endpoint to refresh the session (refreshtoken.ts):
-```js
-await SuperTokens.refreshSession(req, res);
-```
+   ```js
+   await SuperTokens.refreshSession(req, res);
+   ```
 6) If the user access the login page, but they may have a session alive already, then we redirect to the homepage (see in index.ts):
-```js
-app.get("/", async function (req, res) {
-  try {
-    let result = await SuperTokens.getSession(req, res);
-    // redirect to home page and return
-  } catch (err) {
-    if (SuperTokens.Error.isErrorFromAuth(err) && err.errType === SuperTokens.Error.TRY_REFRESH_TOKEN) {
-      // session may be alive, so we redirect to home page and return
-    }
-  };
-  // send login page as we know a session is not alive anymore
-});
-```
+   ```js
+   app.get("/", async function (req, res) {
+     try {
+       let result = await SuperTokens.getSession(req, res);
+       // redirect to home page and return
+     } catch (err) {
+       if (SuperTokens.Error.isErrorFromAuth(err) && err.errType === SuperTokens.Error.TRY_REFRESH_TOKEN) {
+         // session may be alive, so we redirect to home page and return
+       }
+     };
+     // send login page as we know a session is not alive anymore
+   });
+   ```
 ### Frontend
 
 ## Authors

@@ -10,7 +10,6 @@ import moment from 'moment';
 import * as React from 'react';
 import SuperTokensRequest from 'supertokens-website';
 const IS_FIREFOX = typeof InstallTrigger !== 'undefined';
-// TODO: show stolen tokens so far!
 export default class LoginPage extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -25,10 +24,19 @@ export default class LoginPage extends React.PureComponent {
                     return (React.createElement("li", { key: key }, i.userId.toUpperCase() + ", " + moment(i.time).format("DD MMM YYYY hh:mm a")));
                 }))));
         };
-        this.loginPressed = () => __awaiter(this, void 0, void 0, function* () {
+        this.loginAsVictimPressed = () => __awaiter(this, void 0, void 0, function* () {
             try {
                 let response = yield SuperTokensRequest.post("/api/login");
                 window.location.href = "/home";
+            }
+            catch (err) {
+                console.log("error while trying to login!");
+            }
+        });
+        this.loginAsAttackerPressed = () => __awaiter(this, void 0, void 0, function* () {
+            try {
+                let response = yield SuperTokensRequest.post("/api/login");
+                window.location.href = "/attack";
             }
             catch (err) {
                 console.log("error while trying to login!");
@@ -79,7 +87,10 @@ export default class LoginPage extends React.PureComponent {
                         color: "#ffffff",
                         fontSize: "25px",
                         fontFamily: 'Share Tech, sans-serif'
-                    } }, "If this is the non-private window:"),
+                    } },
+                    "If this is the ",
+                    React.createElement("b", null, "non-private"),
+                    " window:"),
                 React.createElement("div", { style: {
                         color: "#ffffff",
                         fontSize: "17px",
@@ -99,13 +110,16 @@ export default class LoginPage extends React.PureComponent {
                         paddingLeft: 5, paddingRight: 5,
                         fontSize: 17,
                         fontFamily: 'Share Tech, sans-serif'
-                    }, onClick: this.loginPressed }, "Login as innocent victim"),
+                    }, onClick: this.loginAsVictimPressed }, "Login as innocent victim"),
                 React.createElement("div", { style: { height: "40px" } }),
                 React.createElement("div", { style: {
                         color: "#ffffff",
                         fontSize: "25px",
                         fontFamily: 'Share Tech, sans-serif'
-                    } }, "If this is the private window:"),
+                    } },
+                    "If this is the ",
+                    React.createElement("b", null, "private"),
+                    " window:"),
                 React.createElement("div", { style: {
                         color: "#ffffff",
                         fontSize: "17px",
@@ -125,6 +139,6 @@ export default class LoginPage extends React.PureComponent {
                         paddingLeft: 5, paddingRight: 5,
                         fontSize: 17,
                         fontFamily: 'Share Tech, sans-serif'
-                    }, onClick: this.loginPressed }, "Login as evil ATTACKER"))));
+                    }, onClick: this.loginAsAttackerPressed }, "Login as evil ATTACKER"))));
     }
 }

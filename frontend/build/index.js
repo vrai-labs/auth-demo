@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import SuperTokensRequest from 'supertokens-website';
+import AttackPage from './attack';
+import AttackSuccess from './attacksuccess';
 import HomePage from './homepage';
 import LoginPage from './loginpage';
 class Router extends React.PureComponent {
@@ -17,6 +19,12 @@ class Router extends React.PureComponent {
         }
         else if (path === "home") {
             return (React.createElement(HomePage, null));
+        }
+        else if (path === "attack") {
+            return (React.createElement(AttackPage, null));
+        }
+        else if (path === "attacksuccess") {
+            return React.createElement(AttackSuccess, null);
         }
         else {
             return (React.createElement("div", null,

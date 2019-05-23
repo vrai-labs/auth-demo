@@ -1,7 +1,7 @@
 import * as React from 'react';
 import SuperTokensRequest from 'supertokens-website';
 
-export default class HomePage extends React.PureComponent<{}, {
+export default class AttackPage extends React.PureComponent<{}, {
     name: string | undefined,
     userId: string | undefined, apiCalls: number,
     startTime: number
@@ -45,42 +45,24 @@ export default class HomePage extends React.PureComponent<{}, {
                         color: "#ffffff",
                         fontSize: "20px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}><b>Welcome <span style={{ color: "#00ff00" }}>{name}</span>!</b></div>
+                    }}><b>Welcome evil <span style={{ color: "#ff0000" }}>ATTACKER</span>!</b></div>
                     <div style={{
                         color: "#ffffff",
                         fontSize: "17px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>While you are on this page, a background job is running that is calling an API every second. This is meant to simulate user actions on behalf of {name}. <br /><br /> This session is alive via a short lived access token (life of 10 secs) and a long lived refresh token. If you want to see the API calls and what happens after the access token expires, please inspect this page and go to the Network Section.</div>
-                    <div style={{ height: "40px" }} />
-                    <div style={{
-                        color: "#bc0d0d",
-                        fontSize: "17px",
-                        fontFamily: 'Share Tech, sans-serif'
-                    }}>After reading the above, please switch to the other window and login as the attacker</div>
-                    <div style={{ height: "10px" }} />
+                    }}>You are now going to steal the cookies of the victim on the other window - MUHAHAHAHA.<br /> To do so, please go back to the other window and follow the instructions "COPYING COOKIES"</div>
+                    <div style={{ height: "30px" }} />
                     <div style={{
                         color: "#ffffff",
                         fontSize: "17px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>COPYING COOKIES<br />
+                    }}>PASTING COOKIES<br />
                         - Right click and open Inspect Element<br />
                         - Navigate to the Storage section<br />
                         - Find the cookies associated with <span style={{ color: "#ff9a00" }}>supertokens.io</span><br />
-                        - Copy the value of the cookie with the name "sRefreshToken"<br />
-                        - Now go back to the other window and follow the instructions "PASTE COOKIES"<br />
+                        - Paste the copied value against the cookie with the name "sRefreshToken"<br />
+                        - You have hijacked their session! Now wait for a bit...<br />
                     </div>
-                    <div style={{ height: "110px" }} />
-                    <button
-                        style={{
-                            color: "#000000",
-                            background: "#ffffff",
-                            justifyContent: "center", alignItems: "center",
-                            paddingTop: 5, paddingBottom: 5,
-                            paddingLeft: 5, paddingRight: 5,
-                            fontSize: 17,
-                            fontFamily: 'Share Tech, sans-serif'
-                        }}
-                        onClick={this.logoutPressed}>Logout</button>
                 </div>
             </div>
         );
@@ -101,20 +83,11 @@ export default class HomePage extends React.PureComponent<{}, {
     }
 
     componentDidMount() {
+        history.pushState(null, "", location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
         this.fetchUserInfo();
-    }
-
-    logoutPressed = async () => {
-        try {
-            await SuperTokensRequest.post("/api/logout");
-            window.location.href = "/";
-        } catch (err) {
-            if (err.response !== undefined && err.response.status === 440) {
-                window.location.href = "/";
-            } else {
-                console.log("error while fetching user data");
-            }
-        }
     }
 
     fetchUserInfo = async () => {
@@ -130,7 +103,7 @@ export default class HomePage extends React.PureComponent<{}, {
             }));
         } catch (err) {
             if (err.response !== undefined && err.response.status === 440) {
-                window.location.href = "/";
+                window.location.href = "/attacksuccess";
                 return;
             } else {
                 console.log("error while fetching user data");

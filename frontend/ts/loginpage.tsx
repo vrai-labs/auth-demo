@@ -6,7 +6,6 @@ declare const InstallTrigger: any;
 
 const IS_FIREFOX = typeof InstallTrigger !== 'undefined';
 
-// TODO: show stolen tokens so far!
 export default class LoginPage extends React.PureComponent<{}, {
     thefts: { userId: string, time: number }[] | undefined
 }> {
@@ -85,7 +84,7 @@ export default class LoginPage extends React.PureComponent<{}, {
                         color: "#ffffff",
                         fontSize: "25px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>If this is the non-private window:</div>
+                    }}>If this is the <b>non-private</b> window:</div>
                     <div style={{
                         color: "#ffffff",
                         fontSize: "17px",
@@ -102,13 +101,13 @@ export default class LoginPage extends React.PureComponent<{}, {
                             fontSize: 17,
                             fontFamily: 'Share Tech, sans-serif'
                         }}
-                        onClick={this.loginPressed}>Login as innocent victim</button>
+                        onClick={this.loginAsVictimPressed}>Login as innocent victim</button>
                     <div style={{ height: "40px" }} />
                     <div style={{
                         color: "#ffffff",
                         fontSize: "25px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>If this is the private window:</div>
+                    }}>If this is the <b>private</b> window:</div>
                     <div style={{
                         color: "#ffffff",
                         fontSize: "17px",
@@ -125,16 +124,25 @@ export default class LoginPage extends React.PureComponent<{}, {
                             fontSize: 17,
                             fontFamily: 'Share Tech, sans-serif'
                         }}
-                        onClick={this.loginPressed}>Login as evil ATTACKER</button>
+                        onClick={this.loginAsAttackerPressed}>Login as evil ATTACKER</button>
                 </div>
             </div>
         );
     }
 
-    loginPressed = async () => {
+    loginAsVictimPressed = async () => {
         try {
             let response = await SuperTokensRequest.post("/api/login");
             window.location.href = "/home";
+        } catch (err) {
+            console.log("error while trying to login!");
+        }
+    }
+
+    loginAsAttackerPressed = async () => {
+        try {
+            let response = await SuperTokensRequest.post("/api/login");
+            window.location.href = "/attack";
         } catch (err) {
             console.log("error while trying to login!");
         }

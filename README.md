@@ -57,7 +57,7 @@ npm i --save cookie-parser
    ```js
    await SuperTokens.refreshSession(req, res);
    ```
-6) If the user access the login page, but they may have a session alive already, then we redirect to the homepage (see in index.ts):
+6) If the user accessing the login page has a session which is alive already, then we redirect to the homepage (see in index.ts):
    ```js
    app.get("/", async function (req, res) {
      try {

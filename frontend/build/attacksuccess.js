@@ -33,7 +33,7 @@ export default class AttackSuccess extends React.PureComponent {
                     React.createElement("br", null),
                     React.createElement("br", null),
                     "But since this webapp is using ",
-                    React.createElement("a", { href: "https://github.com/supertokens/supertokens-node-mysql-ref-jwt", target: "_blank", style: { color: "#00ff00" } }, "our session management solution"),
+                    React.createElement("a", { href: "https://github.com/supertokens/supertokens-node-mysql-ref-jwt", target: "_blank", style: { color: "#00ff00" } }, "SuperTokens' session management solution"),
                     ", the victim is safe! Our solution detected this theft and revoked their session! Go back to the other window.. they would have been logged out :)",
                     React.createElement("br", null),
                     "Thank you for your time!",

@@ -75,12 +75,18 @@ export default class LoginPage extends React.PureComponent<{}, {
                         fontSize: "25px",
                         fontFamily: 'Share Tech, sans-serif'
                     }}><b>This is a demo that demonstrates a session management library capable of detecting token theft!</b></div>
-                    <div style={{ height: "40px" }} />
+                    <div style={{ height: "20px" }} />
                     <div style={{
-                        color: "#ff0000",
+                        color: "#ffffff",
                         fontSize: "20px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>Please make sure this is a non-private window</div>
+                    }}>Demo duration: under 4 mins</div>
+                    <div style={{ height: "40px" }} />
+                    <div style={{
+                        color: "#ffffff",
+                        fontSize: "20px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    }}>Please make sure this is <span style={{ color: "#ff0000" }}>not a private</span> window</div>
                     <div style={{ height: "40px" }} />
                     <button
                         style={{

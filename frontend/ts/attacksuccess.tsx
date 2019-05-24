@@ -37,7 +37,7 @@ export default class AttackSuccess extends React.PureComponent<{}, {}> {
                         fontSize: "20px",
                         fontFamily: 'Share Tech, sans-serif'
                     }}>You have successfully stolen the victim's auth tokens!<br /><br />
-                        But since this webapp is using <a href="https://github.com/supertokens/supertokens-node-mysql-ref-jwt" target="_blank" style={{ color: "#00ff00" }}>our session management solution</a>, the victim is safe! Our solution detected this theft and revoked their session! Go back to the other window.. they would have been logged out :)<br />
+                        But since this webapp is using <a href="https://github.com/supertokens/supertokens-node-mysql-ref-jwt" target="_blank" style={{ color: "#00ff00" }}>SuperTokens' session management solution</a>, the victim is safe! Our solution detected this theft and revoked their session! Go back to the other window.. they would have been logged out :)<br />
                         Thank you for your time!<br /><br /><br />
                         If you want to see how this demo works, please visit this <a href="https://github.com/supertokens/auth-demo" target="_blank" style={{ color: "#00ff00" }}>GitHub Repo</a></div>
                 </div>

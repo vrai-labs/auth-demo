@@ -66,12 +66,21 @@ export default class LoginPage extends React.PureComponent {
                         fontFamily: 'Share Tech, sans-serif'
                     } },
                     React.createElement("b", null, "This is a demo that demonstrates a session management library capable of detecting token theft!")),
-                React.createElement("div", { style: { height: "40px" } }),
+                React.createElement("div", { style: { height: "20px" } }),
                 React.createElement("div", { style: {
-                        color: "#ff0000",
+                        color: "#ffffff",
                         fontSize: "20px",
                         fontFamily: 'Share Tech, sans-serif'
-                    } }, "Please make sure this is a non-private window"),
+                    } }, "Demo duration: under 4 mins"),
+                React.createElement("div", { style: { height: "40px" } }),
+                React.createElement("div", { style: {
+                        color: "#ffffff",
+                        fontSize: "20px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    } },
+                    "Please make sure this is ",
+                    React.createElement("span", { style: { color: "#ff0000" } }, "not a private"),
+                    " window"),
                 React.createElement("div", { style: { height: "40px" } }),
                 React.createElement("button", { style: {
                         color: "#000000",

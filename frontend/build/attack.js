@@ -103,10 +103,6 @@ export default class AttackPage extends React.PureComponent {
         return this.getMainView(this.state.name, this.state.userId);
     }
     componentDidMount() {
-        history.pushState(null, "", location.href);
-        window.onpopstate = function () {
-            history.go(1);
-        };
         this.fetchUserInfo();
     }
 }

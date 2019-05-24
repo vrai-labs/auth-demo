@@ -27,7 +27,7 @@ export default class LoginPage extends React.PureComponent {
         this.login = () => __awaiter(this, void 0, void 0, function* () {
             try {
                 let response = yield SuperTokensRequest.post("/api/login");
-                window.location.href = "/home";
+                window.location.href = "/attackhome";
             }
             catch (err) {
                 console.log("error while trying to login!");
@@ -59,19 +59,6 @@ export default class LoginPage extends React.PureComponent {
                     React.createElement("img", { src: "https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/logo%20on%20black%20bg%402x.png", style: {
                             height: "60px"
                         } })),
-                React.createElement("div", { style: { height: "10px" } }),
-                React.createElement("div", { style: {
-                        color: "#ffffff",
-                        fontSize: "25px",
-                        fontFamily: 'Share Tech, sans-serif'
-                    } },
-                    React.createElement("b", null, "This is a demo that demonstrates a session management library capable of detecting token theft!")),
-                React.createElement("div", { style: { height: "40px" } }),
-                React.createElement("div", { style: {
-                        color: "#ff0000",
-                        fontSize: "20px",
-                        fontFamily: 'Share Tech, sans-serif'
-                    } }, "Please make sure this is a non-private window"),
                 React.createElement("div", { style: { height: "40px" } }),
                 React.createElement("button", { style: {
                         color: "#000000",
@@ -82,7 +69,7 @@ export default class LoginPage extends React.PureComponent {
                         fontSize: 17,
                         fontFamily: 'Share Tech, sans-serif'
                     }, onClick: this.login },
-                    "Login as innocent ",
-                    React.createElement("b", null, "victim")))));
+                    "Login as evil ",
+                    React.createElement("b", null, "ATTACKER")))));
     }
 }

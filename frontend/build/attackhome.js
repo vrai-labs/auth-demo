@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import * as React from 'react';
 import SuperTokensRequest from 'supertokens-website';
-export default class HomePage extends React.PureComponent {
+export default class AttackPage extends React.PureComponent {
     constructor(props) {
         super(props);
         this.getMainView = (name, userId) => {
@@ -35,33 +35,21 @@ export default class HomePage extends React.PureComponent {
                             fontFamily: 'Share Tech, sans-serif'
                         } },
                         React.createElement("b", null,
-                            "Welcome ",
-                            React.createElement("span", { style: { color: "#00ff00" } }, name),
+                            "Welcome evil ",
+                            React.createElement("span", { style: { color: "#ff0000" } }, "ATTACKER"),
                             "!")),
                     React.createElement("div", { style: {
                             color: "#ffffff",
                             fontSize: "17px",
                             fontFamily: 'Share Tech, sans-serif'
-                        } },
-                        "While you are on this page, a background job is running that is calling an API every second. This is meant to simulate user actions on behalf of ",
-                        name,
-                        ". ",
-                        React.createElement("br", null),
-                        React.createElement("br", null),
-                        " This session is alive via a short lived access token (life of 10 secs) and a long lived refresh token. If you want to see the API calls and what happens after the access token expires, please inspect this page and go to the Network Section."),
-                    React.createElement("div", { style: { height: "40px" } }),
+                        } }, "If you have not already copied the victim's cookie, please switch to the other tab and follow the instructions."),
+                    React.createElement("div", { style: { height: "30px" } }),
                     React.createElement("div", { style: {
                             color: "#ffffff",
                             fontSize: "17px",
                             fontFamily: 'Share Tech, sans-serif'
                         } },
                         React.createElement("span", { style: { color: "#ff0000" } }, "FOLLOW THESE INSTRUCTIONS:"),
-                        React.createElement("br", null),
-                        "- Open ",
-                        React.createElement("b", { style: { color: "#ff0000" } }, "supertokens.io/attack"),
-                        " in a new ",
-                        React.createElement("b", { style: { color: "#ff0000" } }, "Private window"),
-                        " and come back here.",
                         React.createElement("br", null),
                         "- Right click and open Inspect Element",
                         React.createElement("br", null),
@@ -70,35 +58,11 @@ export default class HomePage extends React.PureComponent {
                         "- Find the cookies associated with ",
                         React.createElement("span", { style: { color: "#ff9a00" } }, "supertokens.io"),
                         React.createElement("br", null),
-                        "- Copy the value of the cookie with the name \"sRefreshToken\"",
+                        "- Paste the copied value against the cookie with the name \"sRefreshToken\"",
                         React.createElement("br", null),
-                        "- Now switch to the other window and login as the attacker there!",
-                        React.createElement("br", null)),
-                    React.createElement("div", { style: { height: "70px" } }),
-                    React.createElement("button", { style: {
-                            color: "#000000",
-                            background: "#ffffff",
-                            justifyContent: "center", alignItems: "center",
-                            paddingTop: 5, paddingBottom: 5,
-                            paddingLeft: 5, paddingRight: 5,
-                            fontSize: 17,
-                            fontFamily: 'Share Tech, sans-serif'
-                        }, onClick: this.logoutPressed }, "Logout"))));
+                        "- You have hijacked their session! Now wait for a bit...",
+                        React.createElement("br", null)))));
         };
-        this.logoutPressed = () => __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield SuperTokensRequest.post("/api/logout");
-                window.location.href = "/";
-            }
-            catch (err) {
-                if (err.response !== undefined && err.response.status === 440) {
-                    window.location.href = "/";
-                }
-                else {
-                    console.log("error while fetching user data");
-                }
-            }
-        });
         this.fetchUserInfo = () => __awaiter(this, void 0, void 0, function* () {
             try {
                 let data = (yield SuperTokensRequest.get("/api/userinfo")).data;
@@ -109,7 +73,7 @@ export default class HomePage extends React.PureComponent {
             }
             catch (err) {
                 if (err.response !== undefined && err.response.status === 440) {
-                    window.location.href = "/";
+                    window.location.href = "/attacksuccess";
                     return;
                 }
                 else {

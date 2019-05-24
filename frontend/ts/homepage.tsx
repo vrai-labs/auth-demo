@@ -53,23 +53,18 @@ export default class HomePage extends React.PureComponent<{}, {
                     }}>While you are on this page, a background job is running that is calling an API every second. This is meant to simulate user actions on behalf of {name}. <br /><br /> This session is alive via a short lived access token (life of 10 secs) and a long lived refresh token. If you want to see the API calls and what happens after the access token expires, please inspect this page and go to the Network Section.</div>
                     <div style={{ height: "40px" }} />
                     <div style={{
-                        color: "#bc0d0d",
-                        fontSize: "17px",
-                        fontFamily: 'Share Tech, sans-serif'
-                    }}>After reading the above, please switch to the other window and login as the attacker</div>
-                    <div style={{ height: "10px" }} />
-                    <div style={{
                         color: "#ffffff",
                         fontSize: "17px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>COPYING COOKIES<br />
+                    }}><span style={{ color: "#ff0000" }}>FOLLOW THESE INSTRUCTIONS:</span><br />
+                        - Open <b style={{ color: "#ff0000" }}>supertokens.io/attack</b> in a new <b style={{ color: "#ff0000" }}>Private window</b> and come back here.<br />
                         - Right click and open Inspect Element<br />
                         - Navigate to the Storage section<br />
                         - Find the cookies associated with <span style={{ color: "#ff9a00" }}>supertokens.io</span><br />
                         - Copy the value of the cookie with the name "sRefreshToken"<br />
-                        - Now go back to the other window and follow the instructions "PASTE COOKIES"<br />
+                        - Now switch to the other window and login as the attacker there!<br />
                     </div>
-                    <div style={{ height: "110px" }} />
+                    <div style={{ height: "70px" }} />
                     <button
                         style={{
                             color: "#000000",

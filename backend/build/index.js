@@ -93,6 +93,24 @@ function initRoutesAndServer() {
             res.sendFile("index.html", { root: "./" });
         });
     });
+    app.get("/attack", function (req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let result = yield SuperTokens.getSession(req, res);
+                res.redirect("/attackhome");
+                return;
+            }
+            catch (err) {
+                if (SuperTokens.Error.isErrorFromAuth(err) &&
+                    err.errType === SuperTokens.Error.TRY_REFRESH_TOKEN) {
+                    res.redirect("/attackhome");
+                    return;
+                }
+            }
+            ;
+            res.sendFile("index.html", { root: "./" });
+        });
+    });
     app.use("*", function (req, res, next) {
         res.sendFile("index.html", { root: "./" });
     });

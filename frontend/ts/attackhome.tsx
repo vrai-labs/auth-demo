@@ -50,13 +50,13 @@ export default class AttackPage extends React.PureComponent<{}, {
                         color: "#ffffff",
                         fontSize: "17px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>You are now going to steal the cookies of the victim on the other window - MUHAHAHAHA.<br /> To do so, please go back to the other window and follow the instructions "COPYING COOKIES"</div>
+                    }}>If you have not already copied the victim's cookie, please switch to the other tab and follow the instructions.</div>
                     <div style={{ height: "30px" }} />
                     <div style={{
                         color: "#ffffff",
                         fontSize: "17px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>PASTING COOKIES<br />
+                    }}><span style={{ color: "#ff0000" }}>FOLLOW THESE INSTRUCTIONS:</span><br />
                         - Right click and open Inspect Element<br />
                         - Navigate to the Storage section<br />
                         - Find the cookies associated with <span style={{ color: "#ff9a00" }}>supertokens.io</span><br />
@@ -83,10 +83,6 @@ export default class AttackPage extends React.PureComponent<{}, {
     }
 
     componentDidMount() {
-        history.pushState(null, "", location.href);
-        window.onpopstate = function () {
-            history.go(1);
-        };
         this.fetchUserInfo();
     }
 

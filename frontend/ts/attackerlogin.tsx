@@ -69,18 +69,6 @@ export default class LoginPage extends React.PureComponent<{}, {
                                 height: "60px"
                             }} />
                     </div>
-                    <div style={{ height: "10px" }} />
-                    <div style={{
-                        color: "#ffffff",
-                        fontSize: "25px",
-                        fontFamily: 'Share Tech, sans-serif'
-                    }}><b>This is a demo that demonstrates a session management library capable of detecting token theft!</b></div>
-                    <div style={{ height: "40px" }} />
-                    <div style={{
-                        color: "#ff0000",
-                        fontSize: "20px",
-                        fontFamily: 'Share Tech, sans-serif'
-                    }}>Please make sure this is a non-private window</div>
                     <div style={{ height: "40px" }} />
                     <button
                         style={{
@@ -92,16 +80,17 @@ export default class LoginPage extends React.PureComponent<{}, {
                             fontSize: 17,
                             fontFamily: 'Share Tech, sans-serif'
                         }}
-                        onClick={this.login}>Login as innocent <b>victim</b></button>
+                        onClick={this.login}>Login as evil <b>ATTACKER</b></button>
                 </div>
             </div>
         );
     }
 
+
     login = async () => {
         try {
             let response = await SuperTokensRequest.post("/api/login");
-            window.location.href = "/home";
+            window.location.href = "/attackhome";
         } catch (err) {
             console.log("error while trying to login!");
         }

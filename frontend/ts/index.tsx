@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import SuperTokensRequest from 'supertokens-website';
 
-import AttackPage from './attack';
+import AttackerLoginPage from './attackerlogin';
+import AttackPage from './attackhome';
 import AttackSuccess from './attacksuccess';
 import HomePage from './homepage';
 import LoginPage from './loginpage';
@@ -26,12 +27,14 @@ class Router extends React.PureComponent<{}, {}> {
             return (
                 <HomePage />
             );
-        } else if (path === "attack") {
+        } else if (path === "attackhome") {
             return (
                 <AttackPage />
             );
         } else if (path === "attacksuccess") {
             return <AttackSuccess />;
+        } else if (path === "attack") {
+            return <AttackerLoginPage />;
         } else {
             return (
                 <div>

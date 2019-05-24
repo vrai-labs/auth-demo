@@ -43,10 +43,4 @@ export default class AttackSuccess extends React.PureComponent {
                     "If you want to see how this demo works, please visit this ",
                     React.createElement("a", { href: "https://github.com/supertokens/auth-demo", target: "_blank", style: { color: "#00ff00" } }, "GitHub Repo")))));
     }
-    componentDidMount() {
-        history.pushState(null, "", location.href);
-        window.onpopstate = function () {
-            history.go(1);
-        };
-    }
 }

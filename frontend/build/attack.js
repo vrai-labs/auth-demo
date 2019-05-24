@@ -23,15 +23,15 @@ export default class AttackPage extends React.PureComponent {
                         width: "50%"
                     } },
                     React.createElement("div", { style: {
-                            background: "#0000ff", paddingTop: "5px", paddingBottom: "5px"
+                            paddingTop: "5px", paddingBottom: "5px"
                         } },
-                        React.createElement("img", { src: "https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/Artboard%20123%402x.png", style: {
+                        React.createElement("img", { src: "https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/logo%20on%20black%20bg%402x.png", style: {
                                 height: "60px"
                             } })),
                     React.createElement("div", { style: { height: "10px" } }),
                     React.createElement("div", { style: {
                             color: "#ffffff",
-                            fontSize: "20px",
+                            fontSize: "25px",
                             fontFamily: 'Share Tech, sans-serif'
                         } },
                         React.createElement("b", null,

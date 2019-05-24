@@ -59,10 +59,10 @@ export default class LoginPage extends React.PureComponent<{}, {
                     }}>
                     <div
                         style={{
-                            background: "#0000ff", paddingTop: "5px", paddingBottom: "5px"
+                            paddingTop: "5px", paddingBottom: "5px"
                         }}>
                         <img
-                            src={"https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/Artboard%20123%402x.png"}
+                            src={"https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/logo%20on%20black%20bg%402x.png"}
                             style={{
                                 height: "60px"
                             }} />
@@ -70,21 +70,21 @@ export default class LoginPage extends React.PureComponent<{}, {
                     <div style={{ height: "10px" }} />
                     <div style={{
                         color: "#ffffff",
-                        fontSize: "20px",
+                        fontSize: "25px",
                         fontFamily: 'Share Tech, sans-serif'
                     }}><b>This is a demo that demonstrates a session management library capable of detecting token theft!</b></div>
                     <div style={{ height: "20px" }} />
                     <div style={{
                         color: "#bc0d0d",
-                        fontSize: "17px",
+                        fontSize: "20px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>Open this page on two Firefox windows (not tabs) - <span style={{ color: "#ff0000" }}><b>one private, and one non-private</b></span></div>
+                    }}>Open this page on two Firefox windows (not tabs) - <span style={{ color: "#ff0000" }}><b>one private, and one regular</b></span></div>
                     <div style={{ height: "60px" }} />
                     <div style={{
                         color: "#ffffff",
                         fontSize: "25px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}>If this is the <b>non-private</b> window:</div>
+                    }}>If this is the <b>regular</b> window:</div>
                     <div style={{
                         color: "#ffffff",
                         fontSize: "17px",
@@ -101,7 +101,7 @@ export default class LoginPage extends React.PureComponent<{}, {
                             fontSize: 17,
                             fontFamily: 'Share Tech, sans-serif'
                         }}
-                        onClick={this.loginAsVictimPressed}>Login as innocent victim</button>
+                        onClick={this.loginAsVictimPressed}>Login as innocent <b>victim</b></button>
                     <div style={{ height: "40px" }} />
                     <div style={{
                         color: "#ffffff",
@@ -124,7 +124,7 @@ export default class LoginPage extends React.PureComponent<{}, {
                             fontSize: 17,
                             fontFamily: 'Share Tech, sans-serif'
                         }}
-                        onClick={this.loginAsAttackerPressed}>Login as evil ATTACKER</button>
+                        onClick={this.loginAsAttackerPressed}>Login as evil <b>ATTACKER</b></button>
                 </div>
             </div>
         );

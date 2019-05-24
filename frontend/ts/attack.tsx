@@ -32,10 +32,10 @@ export default class AttackPage extends React.PureComponent<{}, {
                     }}>
                     <div
                         style={{
-                            background: "#0000ff", paddingTop: "5px", paddingBottom: "5px"
+                            paddingTop: "5px", paddingBottom: "5px"
                         }}>
                         <img
-                            src={"https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/Artboard%20123%402x.png"}
+                            src={"https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/logo%20on%20black%20bg%402x.png"}
                             style={{
                                 height: "60px"
                             }} />
@@ -43,7 +43,7 @@ export default class AttackPage extends React.PureComponent<{}, {
                     <div style={{ height: "10px" }} />
                     <div style={{
                         color: "#ffffff",
-                        fontSize: "20px",
+                        fontSize: "25px",
                         fontFamily: 'Share Tech, sans-serif'
                     }}><b>Welcome evil <span style={{ color: "#ff0000" }}>ATTACKER</span>!</b></div>
                     <div style={{

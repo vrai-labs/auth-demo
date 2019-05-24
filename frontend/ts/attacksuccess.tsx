@@ -17,10 +17,10 @@ export default class AttackSuccess extends React.PureComponent<{}, {}> {
                     }}>
                     <div
                         style={{
-                            background: "#0000ff", paddingTop: "5px", paddingBottom: "5px"
+                            paddingTop: "5px", paddingBottom: "5px"
                         }}>
                         <img
-                            src={"https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/Artboard%20123%402x.png"}
+                            src={"https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/logo%20on%20black%20bg%402x.png"}
                             style={{
                                 height: "60px"
                             }} />

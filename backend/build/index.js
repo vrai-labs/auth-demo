@@ -14,14 +14,13 @@ const http = require("http");
 const SuperTokens = require("supertokens-node-mysql-ref-jwt");
 const login_1 = require("./login");
 const logout_1 = require("./logout");
-const recenttheft_1 = require("./recenttheft");
 const refreshtoken_1 = require("./refreshtoken");
 const userInfo_1 = require("./userInfo");
 let app = express();
 app.use(cookieParser());
 SuperTokens.init({
     cookie: {
-        domain: "192.168.29.69",
+        domain: "supertokens.io",
         secure: false
     },
     mysql: {
@@ -46,7 +45,6 @@ SuperTokens.init({
 function onTokenTheftDetection(userId, sessionHandle) {
     return __awaiter(this, void 0, void 0, function* () {
         yield SuperTokens.revokeSessionUsingSessionHandle(sessionHandle);
-        recenttheft_1.Thefts.add(userId);
     });
 }
 function initRoutesAndServer() {
@@ -70,12 +68,6 @@ function initRoutesAndServer() {
     });
     app.post("/api/logout", function (req, res) {
         logout_1.default(req, res).catch(err => {
-            console.log(err);
-            res.status(500).send("");
-        });
-    });
-    app.get("/api/recenttheft", function (req, res) {
-        recenttheft_1.recentTheft(req, res).catch(err => {
             console.log(err);
             res.status(500).send("");
         });

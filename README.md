@@ -20,7 +20,7 @@ npm i --save supertokens-node-mysql-ref-jwt
 npm i --save supertokens-website
 npm i --save cookie-parser
 ```
-### Backend - 7 steps to setup!
+### Backend - 7 steps!
 1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router:
    ```js
    import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
@@ -56,8 +56,9 @@ npm i --save cookie-parser
 5) There is a special API endpoint to refresh the session (refreshtoken.ts):
    ```js
    await SuperTokens.refreshSession(req, res);
+   // send status 200 to client.
    ```
-6) If the user access the login page, but they may have a session alive already, then we redirect to the homepage (see in index.ts):
+6) If the user accessing the login page has a session which is alive already, then we redirect to the homepage (see in index.ts):
    ```js
    app.get("/", async function (req, res) {
      try {
@@ -80,7 +81,7 @@ npm i --save cookie-parser
      }
    });
    ```
-### Frontend - 4 steps to setup!
+### Frontend - 4 steps!
 The frontend is written in ReactJS.
 
 1) We initialise the SuperTokens library in the constructor of the root component (index.tsx):

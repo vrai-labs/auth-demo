@@ -56,7 +56,7 @@ export default class HomePage extends React.PureComponent<{}, {
                         color: "#ffffff",
                         fontSize: "17px",
                         fontFamily: 'Share Tech, sans-serif'
-                    }}><span style={{ color: "#ff0000" }}>FOLLOW THESE INSTRUCTIONS:</span><br />
+                    }}>FOLLOW THESE INSTRUCTIONS:<br />
                         - Open <b style={{ color: "#ff0000" }}>supertokens.io/attack</b> in a new <b style={{ color: "#ff0000" }}>Private window</b> and come back here.<br />
                         - Right click and open Inspect Element<br />
                         - Navigate to the Storage section<br />

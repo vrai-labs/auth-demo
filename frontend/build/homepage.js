@@ -55,7 +55,7 @@ export default class HomePage extends React.PureComponent {
                             fontSize: "17px",
                             fontFamily: 'Share Tech, sans-serif'
                         } },
-                        React.createElement("span", { style: { color: "#ff0000" } }, "FOLLOW THESE INSTRUCTIONS:"),
+                        "FOLLOW THESE INSTRUCTIONS:",
                         React.createElement("br", null),
                         "- Open ",
                         React.createElement("b", { style: { color: "#ff0000" } }, "supertokens.io/attack"),

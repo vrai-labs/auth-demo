@@ -11,8 +11,8 @@ This uses [supertokens-node-mysql-ref-jwt](https://github.com/supertokens/supert
 You can see the live demo at http://supertokens.io (Only works on Firefox)
 
 NOTE:
-- We use HTTP for this demo and send cookies with ``secure`` parameter set to ``false``. But in production environment, it is recommended to always use https and keep ``secure`` parameter set to ``true``.
-- The access token expiry time is 10 seconds for the purpose of this demo, but in a production environment, it is recommended to set it to at least 15 mins.
+- **We use HTTP for this demo and send cookies with ``secure`` parameter set to ``false``. But in production environment, it is recommended to always use https and keep ``secure`` parameter set to ``true``.**
+- **The access token expiry time is 10 seconds for the purpose of this demo, but in a production environment, it is recommended to set it to at least 15 mins.**
 
 ## Code setup
 ```bash

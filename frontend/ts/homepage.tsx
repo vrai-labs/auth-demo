@@ -101,10 +101,13 @@ export default class HomePage extends React.PureComponent<{}, {
 
     logoutPressed = async () => {
         try {
-            await SuperTokensRequest.post("/api/logout");
+            let rawData = await SuperTokensRequest.post("/api/logout");
+            if (rawData.status !== 200) {
+                throw rawData;
+            }
             window.location.href = "/";
         } catch (err) {
-            if (err.response !== undefined && err.response.status === 440) {
+            if (err.status === 440) {
                 window.location.href = "/";
             } else {
                 console.log("error while fetching user data");
@@ -114,7 +117,11 @@ export default class HomePage extends React.PureComponent<{}, {
 
     fetchUserInfo = async () => {
         try {
-            let data = (await SuperTokensRequest.get("/api/userinfo")).data;
+            let rawData = await SuperTokensRequest.get("/api/userinfo");
+            if (rawData.status !== 200) {
+                throw rawData;
+            }
+            let data = await rawData.json();
             let name = data.name;
             let userId = data.userId;
             this.setState(oldState => ({
@@ -124,7 +131,8 @@ export default class HomePage extends React.PureComponent<{}, {
                 apiCalls: oldState.apiCalls + 1
             }));
         } catch (err) {
-            if (err.response !== undefined && err.response.status === 440) {
+            console.log(err);
+            if (err.status === 440) {
                 window.location.href = "/";
                 return;
             } else {

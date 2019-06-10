@@ -96,17 +96,24 @@ The frontend is written in ReactJS.
 2) In the login page (loginpage.tsx), when the login button is pressed, we send a POST request to our server:
    ```js
    let response = await SuperTokensRequest.post("/api/login");
+   if (response.status !== 200) {
+      throw response;
+   }
    // success, we redirect to home page.
    ```
 3) In the homepage (homepage.tsx), we get user information in the following way:
    ```js
    try {
-      let data = (await SuperTokensRequest.get("/api/userinfo")).data;
+      let rawData = await SuperTokensRequest.get("/api/userinfo");
+      if (rawData.status !== 200) {
+         throw rawData;
+      }
+      let data = await rawData.json();
       let name = data.name;
       let userId = data.userId;
       // update UI
    } catch (err) {
-      if (err.response !== undefined && err.response.status === 440) {
+      if (err.status === 440) {
          // user's session has expired. we need to redirect to login page.
       }
    }
@@ -114,10 +121,13 @@ The frontend is written in ReactJS.
 4) In the homepage (homepage.tsx), we call our logout API when the user clicks the logout button:
    ```js
    try {
-      await SuperTokensRequest.post("/api/logout");
+      let rawData = await SuperTokensRequest.post("/api/logout");
+      if (rawData.status !== 200) {
+         throw rawData;
+      }
       // logout successful. Redirect to login page
    } catch (err) {
-      if (err.response !== undefined && err.response.status === 440) {
+      if (err.status === 440) {
          // user had an expired session already. So redirect to login page
       }
    }

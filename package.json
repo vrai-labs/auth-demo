@@ -14,7 +14,7 @@
     "moment": "2.24.0",
     "react": "16.4.0",
     "react-dom": "16.4.0",
-    "supertokens-website": "^1.0.0",
+    "supertokens-website": "^2.0.0",
     "supertokens-node-mysql-ref-jwt": "^2.0.0"
   },
   "devDependencies": {

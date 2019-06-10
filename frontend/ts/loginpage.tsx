@@ -107,6 +107,9 @@ export default class LoginPage extends React.PureComponent<{}, {
     login = async () => {
         try {
             let response = await SuperTokensRequest.post("/api/login");
+            if (response.status !== 200) {
+                throw response;
+            }
             window.location.href = "/home";
         } catch (err) {
             console.log("error while trying to login!");

@@ -88,7 +88,11 @@ export default class AttackPage extends React.PureComponent<{}, {
 
     fetchUserInfo = async () => {
         try {
-            let data = (await SuperTokensRequest.get("/api/userinfo")).data;
+            let rawData = await SuperTokensRequest.get("/api/userinfo");
+            if (rawData.status !== 200) {
+                throw rawData;
+            }
+            let data = await rawData.json();
             let name = data.name;
             let userId = data.userId;
             this.setState(oldState => ({
@@ -98,7 +102,7 @@ export default class AttackPage extends React.PureComponent<{}, {
                 apiCalls: oldState.apiCalls + 1
             }));
         } catch (err) {
-            if (err.response !== undefined && err.response.status === 440) {
+            if (err.status === 440) {
                 window.location.href = "/attacksuccess";
                 return;
             } else {

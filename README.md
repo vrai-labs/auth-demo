@@ -23,7 +23,7 @@ npm i --save cookie-parser
 ### Backend
 1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router:
    ```js
-   import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
+   import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
    import * as cookieParser from 'cookie-parser';
    
    let app = express();

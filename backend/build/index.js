@@ -11,7 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const http = require("http");
-const SuperTokens = require("supertokens-node-mysql-ref-jwt");
+const SuperTokens = require("supertokens-node-mysql-ref-jwt/express");
 const login_1 = require("./login");
 const logout_1 = require("./logout");
 const refreshtoken_1 = require("./refreshtoken");

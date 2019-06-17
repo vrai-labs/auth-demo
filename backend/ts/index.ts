@@ -2,7 +2,7 @@ import * as cookieParser from 'cookie-parser';
 import * as express from 'express';
 import * as http from 'http';
 import * as React from 'react';
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
+import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
 
 import login from './login';
 import logout from './logout';

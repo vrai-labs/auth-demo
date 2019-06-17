@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const SuperTokens = require("supertokens-node-mysql-ref-jwt");
+const SuperTokens = require("supertokens-node-mysql-ref-jwt/express");
 function refreshtoken(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

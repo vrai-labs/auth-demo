@@ -83,7 +83,13 @@ export default class HomePage extends React.PureComponent {
                             paddingLeft: 5, paddingRight: 5,
                             fontSize: 17,
                             fontFamily: 'Share Tech, sans-serif'
-                        }, onClick: this.logoutPressed }, "Logout"))));
+                        }, onClick: this.logoutPressed }, "Logout"),
+                    React.createElement("div", { style: { height: "40px" } }),
+                    React.createElement("div", { style: {
+                            color: "#ffffff",
+                            fontSize: "17px",
+                            fontFamily: 'Share Tech, sans-serif'
+                        } }, this.state.apiCalls))));
         };
         this.logoutPressed = () => __awaiter(this, void 0, void 0, function* () {
             try {

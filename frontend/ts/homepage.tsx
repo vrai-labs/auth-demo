@@ -76,6 +76,12 @@ export default class HomePage extends React.PureComponent<{}, {
                             fontFamily: 'Share Tech, sans-serif'
                         }}
                         onClick={this.logoutPressed}>Logout</button>
+                    <div style={{ height: "40px" }} />
+                    <div style={{
+                        color: "#ffffff",
+                        fontSize: "17px",
+                        fontFamily: 'Share Tech, sans-serif'
+                    }}>{this.state.apiCalls}</div>
                 </div>
             </div>
         );

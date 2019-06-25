@@ -56,7 +56,7 @@ export default class AttackPage extends React.PureComponent {
                         "- Navigate to the Storage section",
                         React.createElement("br", null),
                         "- Find the cookies associated with ",
-                        React.createElement("span", { style: { color: "#ff9a00" } }, "supertokens.io"),
+                        React.createElement("span", { style: { color: "#ff9a00" } }, "demo.supertokens.io"),
                         React.createElement("br", null),
                         "- Paste the copied value against the cookie with the name \"sRefreshToken\"",
                         React.createElement("br", null),

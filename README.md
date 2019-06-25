@@ -8,7 +8,7 @@ This demonstrates the behaviour of SuperTokens session management solution in ca
 
 This uses [supertokens-node-mysql-ref-jwt](https://github.com/supertokens/supertokens-node-mysql-ref-jwt) as the backend and [supertokens-website](https://github.com/supertokens/supertokens-website) as the frontend for implementing session management.
 
-You can see the live demo at http://supertokens.io (Only works on Firefox)
+You can see the live demo at http://demo.supertokens.io (Only works on Firefox)
 
 NOTE:
 - **We use HTTP for this demo and send cookies with ``secure`` parameter set to ``false``. But in production environment, it is recommended to always use https and keep ``secure`` parameter set to ``true``.**

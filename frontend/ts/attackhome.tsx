@@ -59,7 +59,7 @@ export default class AttackPage extends React.PureComponent<{}, {
                     }}><span style={{ color: "#ff0000" }}>FOLLOW THESE INSTRUCTIONS:</span><br />
                         - Right click and open Inspect Element<br />
                         - Navigate to the Storage section<br />
-                        - Find the cookies associated with <span style={{ color: "#ff9a00" }}>supertokens.io</span><br />
+                        - Find the cookies associated with <span style={{ color: "#ff9a00" }}>demo.supertokens.io</span><br />
                         - Paste the copied value against the cookie with the name "sRefreshToken"<br />
                         - You have hijacked their session! Now wait for a bit...<br />
                     </div>

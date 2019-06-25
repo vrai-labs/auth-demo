@@ -57,10 +57,10 @@ export default class HomePage extends React.PureComponent<{}, {
                         fontSize: "17px",
                         fontFamily: 'Share Tech, sans-serif'
                     }}>FOLLOW THESE INSTRUCTIONS:<br />
-                        - Open <b style={{ color: "#ff0000" }}>supertokens.io/attack</b> in a new <b style={{ color: "#ff0000" }}>Private window</b> and come back here.<br />
+                        - Open <b style={{ color: "#ff0000" }}>demo.supertokens.io/attack</b> in a new <b style={{ color: "#ff0000" }}>Private window</b> and come back here.<br />
                         - Right click and open Inspect Element<br />
                         - Navigate to the Storage section<br />
-                        - Find the cookies associated with <span style={{ color: "#ff9a00" }}>supertokens.io</span><br />
+                        - Find the cookies associated with <span style={{ color: "#ff9a00" }}>demo.supertokens.io</span><br />
                         - Copy the value of the cookie with the name "sRefreshToken"<br />
                         - Now switch to the other window and login as the attacker there!<br />
                     </div>

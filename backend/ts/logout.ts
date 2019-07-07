@@ -3,7 +3,7 @@ import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
 
 export default async function logout(req: express.Request, res: express.Response) {
     try {
-        let session = await SuperTokens.getSession(req, res);
+        let session = await SuperTokens.getSession(req, res, true);
         await session.revokeSession();
         res.send("");
     } catch (err) {

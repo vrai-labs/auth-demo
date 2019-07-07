@@ -13,7 +13,7 @@ let app = express();
 app.use(cookieParser());
 SuperTokens.init({
     cookie: {
-        domain: "demo.supertokens.io",
+        domain: "192.168.1.112",
         secure: false
     },
     mysql: {
@@ -29,16 +29,11 @@ SuperTokens.init({
             validity: 10
         }
     },
-    onTokenTheftDetection
 }).then(() => {
     initRoutesAndServer();
 }).catch((err: any) => {
     console.log("error while initing auth service!", err);
 });
-
-async function onTokenTheftDetection(userId: string, sessionHandle: string) {
-    await SuperTokens.revokeSessionUsingSessionHandle(sessionHandle);
-}
 
 function initRoutesAndServer() {
     app.post("/api/login", function (req, res) {
@@ -75,7 +70,7 @@ function initRoutesAndServer() {
 
     app.get("/", async function (req, res) {
         try {
-            let result = await SuperTokens.getSession(req, res);
+            let result = await SuperTokens.getSession(req, res, false);
             res.redirect("/home");
             return;
         } catch (err) {
@@ -90,7 +85,7 @@ function initRoutesAndServer() {
 
     app.get("/attack", async function (req, res) {
         try {
-            let result = await SuperTokens.getSession(req, res);
+            let result = await SuperTokens.getSession(req, res, false);
             res.redirect("/attackhome");
             return;
         } catch (err) {

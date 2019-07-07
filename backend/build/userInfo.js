@@ -12,7 +12,7 @@ const SuperTokens = require("supertokens-node-mysql-ref-jwt/express");
 function userInfo(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            let session = yield SuperTokens.getSession(req, res);
+            let session = yield SuperTokens.getSession(req, res, true);
             let userId = session.getUserId();
             let metaInfo = yield session.getSessionData();
             let name = metaInfo.name;

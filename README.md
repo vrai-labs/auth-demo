@@ -43,14 +43,14 @@ npm i --save cookie-parser
    ```
 3) The userInfo API (userInfo.ts) uses the session to get the current user's name and userId:
    ```js
-   let session = await SuperTokens.getSession(req, res);
+   let session = await SuperTokens.getSession(req, res, true);
    let userId = session.getUserId();
    let metaInfo = await session.getSessionData();
    let name = metaInfo.name
    ```
 4) The logout API (logout.ts) destroys the current session:
    ```js
-   let session = await SuperTokens.getSession(req, res);
+   let session = await SuperTokens.getSession(req, res, true);
    await session.revokeSession();
    ```
 5) There is a special API endpoint to refresh the session (refreshtoken.ts):
@@ -62,7 +62,7 @@ npm i --save cookie-parser
    ```js
    app.get("/", async function (req, res) {
      try {
-       let result = await SuperTokens.getSession(req, res);
+       let result = await SuperTokens.getSession(req, res, true);
        // redirect to home page and return
      } catch (err) {
        if (SuperTokens.Error.isErrorFromAuth(err) && err.errType === SuperTokens.Error.TRY_REFRESH_TOKEN) {
@@ -72,14 +72,19 @@ npm i --save cookie-parser
      // send login page as we know a session is not alive anymore
    });
    ```
-7) Detecting token theft (index.ts):
+7) Detecting token theft (refreshtoken.ts):
    ```js
-   SuperTokens.init({
-     ...configs,
-     onTokenTheftDetection: (userId: string, sessionHandle: string) => {
-       // logout user's all devices, or just the devices that use this sessionHandle.
-     }
-   });
+   try {
+        await SuperTokens.refreshSession(req, res);
+        // ...
+    } catch (err) {
+        if (SuperTokens.Error.isErrorFromAuth(err) && err.errType !== SuperTokens.Error.GENERAL_ERROR) {
+            if (err.errType === SuperTokens.Error.UNAUTHORISED_AND_TOKEN_THEFT_DETECTED) {
+                // handle token theft
+            }
+            res.status(440).send("Session expired");
+        }
+    }
    ```
 ### Frontend
 The frontend is written in ReactJS.

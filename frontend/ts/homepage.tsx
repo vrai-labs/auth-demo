@@ -123,7 +123,7 @@ export default class HomePage extends React.PureComponent<{}, {
 
     fetchUserInfo = async () => {
         try {
-            let rawData = await SuperTokensRequest.get("/api/userinfo");
+            let rawData = await fetch("/api/userinfo");
             if (rawData.status !== 200) {
                 throw rawData;
             }

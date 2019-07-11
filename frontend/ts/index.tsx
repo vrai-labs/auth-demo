@@ -12,7 +12,7 @@ class Router extends React.PureComponent<{}, {}> {
 
     constructor(props: any) {
         super(props);
-        SuperTokensRequest.init("/api/refreshtoken", 440);
+        SuperTokensRequest.init("/api/refreshtoken", 440, true);
     }
 
     render() {

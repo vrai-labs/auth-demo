@@ -110,7 +110,7 @@ export default class HomePage extends React.PureComponent {
         });
         this.fetchUserInfo = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                let rawData = yield SuperTokensRequest.get("/api/userinfo");
+                let rawData = yield fetch("/api/userinfo");
                 if (rawData.status !== 200) {
                     throw rawData;
                 }

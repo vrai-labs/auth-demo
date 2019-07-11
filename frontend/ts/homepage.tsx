@@ -148,4 +148,3 @@ export default class HomePage extends React.PureComponent<{}, {
         setTimeout(this.fetchUserInfo, 1000);   // so that it keeps on running in the backgroud
     }
 }
-

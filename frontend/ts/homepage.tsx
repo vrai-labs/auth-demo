@@ -137,7 +137,7 @@ export default class HomePage extends React.PureComponent<{}, {
                 apiCalls: oldState.apiCalls + 1
             }));
         } catch (err) {
-            if (err.response.status === 440) {
+            if (err.response !== undefined && err.response.status === 440) {
                 window.location.href = "/";
                 return;
             } else {

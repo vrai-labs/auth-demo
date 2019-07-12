@@ -6,8 +6,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import axios from 'axios';
 import * as React from 'react';
-import SuperTokensRequest from 'supertokens-website';
+import SuperTokensRequest, { makeSuper } from 'supertokens-website/axios';
+makeSuper(axios);
 export default class HomePage extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -110,19 +112,15 @@ export default class HomePage extends React.PureComponent {
         });
         this.fetchUserInfo = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                let rawData = yield fetch("/api/userinfo");
-                if (rawData.status !== 200) {
-                    throw rawData;
-                }
-                let data = yield rawData.json();
+                let rawData = yield axios("/api/userinfo");
+                let data = yield rawData.data;
                 let name = data.name;
                 let userId = data.userId;
                 this.setState(oldState => (Object.assign({}, oldState, { name,
                     userId, apiCalls: oldState.apiCalls + 1 })));
             }
             catch (err) {
-                console.log(err);
-                if (err.status === 440) {
+                if (err.response.status === 440) {
                     window.location.href = "/";
                     return;
                 }

@@ -1,5 +1,8 @@
+import axios from 'axios';
 import * as React from 'react';
-import SuperTokensRequest from 'supertokens-website';
+import SuperTokensRequest, { makeSuper } from 'supertokens-website/axios';
+
+makeSuper(axios);
 
 export default class HomePage extends React.PureComponent<{}, {
     name: string | undefined,
@@ -123,11 +126,8 @@ export default class HomePage extends React.PureComponent<{}, {
 
     fetchUserInfo = async () => {
         try {
-            let rawData = await fetch("/api/userinfo");
-            if (rawData.status !== 200) {
-                throw rawData;
-            }
-            let data = await rawData.json();
+            let rawData = await axios("/api/userinfo");
+            let data = await rawData.data;
             let name = data.name;
             let userId = data.userId;
             this.setState(oldState => ({
@@ -137,8 +137,7 @@ export default class HomePage extends React.PureComponent<{}, {
                 apiCalls: oldState.apiCalls + 1
             }));
         } catch (err) {
-            console.log(err);
-            if (err.status === 440) {
+            if (err.response.status === 440) {
                 window.location.href = "/";
                 return;
             } else {

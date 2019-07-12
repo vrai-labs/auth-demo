@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import SuperTokensRequest from 'supertokens-website';
+import SuperTokensRequest from 'supertokens-website/axios';
 import AttackerLoginPage from './attackerlogin';
 import AttackPage from './attackhome';
 import AttackSuccess from './attacksuccess';
@@ -9,7 +9,7 @@ import LoginPage from './loginpage';
 class Router extends React.PureComponent {
     constructor(props) {
         super(props);
-        SuperTokensRequest.init("/api/refreshtoken", 440, true);
+        SuperTokensRequest.init("/api/refreshtoken", 440);
     }
     render() {
         let currlocation = window.location.href;

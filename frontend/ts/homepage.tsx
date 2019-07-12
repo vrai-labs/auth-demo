@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as React from 'react';
-import SuperTokensRequest, { makeSuper } from 'supertokens-website/axios';
+import SuperTokensRequest from 'supertokens-website/axios';
 
-makeSuper(axios);
+SuperTokensRequest.makeSuper(axios);
 
 export default class HomePage extends React.PureComponent<{}, {
     name: string | undefined,

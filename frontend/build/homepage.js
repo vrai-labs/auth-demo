@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import axios from 'axios';
 import * as React from 'react';
-import SuperTokensRequest, { makeSuper } from 'supertokens-website/axios';
-makeSuper(axios);
+import SuperTokensRequest from 'supertokens-website/axios';
+SuperTokensRequest.makeSuper(axios);
 export default class HomePage extends React.PureComponent {
     constructor(props) {
         super(props);

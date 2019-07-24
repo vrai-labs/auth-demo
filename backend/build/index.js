@@ -33,7 +33,7 @@ SuperTokens.init({
             renewTokenPath: "/api/refreshtoken"
         },
         accessToken: {
-            validity: 15
+            validity: 10
         }
     },
 }).then(() => {

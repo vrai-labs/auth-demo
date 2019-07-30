@@ -12,6 +12,7 @@
     "cookie-parser": "1.4.4",
     "express": "4.16.4",
     "moment": "2.24.0",
+    "mysql": "2.17.1",
     "react": "16.4.0",
     "react-dom": "16.4.0",
     "supertokens-node-mysql-ref-jwt": "git+https://github.com/supertokens/supertokens-node-mysql-ref-jwt.git#dev",

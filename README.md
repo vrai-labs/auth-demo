@@ -16,10 +16,15 @@ NOTE:
 
 ## Code setup
 ```bash
-npm i --save supertokens-node-mysql-ref-jwt
-npm i --save supertokens-website
-npm i --save cookie-parser
+npm i -d
 ```
+
+## Start demo
+```bash
+DOMAIN=localhost node backend/build/index.js
+```
+After this, open Firefox and visit http://localhost:8080
+
 ### Backend
 1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router:
    ```js

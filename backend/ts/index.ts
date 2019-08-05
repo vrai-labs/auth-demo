@@ -12,7 +12,7 @@ let app = express();
 app.use(cookieParser());
 SuperTokens.init({
     cookie: {
-        domain: "demo.supertokens.io",
+        domain: process.env.DOMAIN === undefined ? "demo.supertokens.io" : process.env.DOMAIN as string,
         secure: false
     },
     mysql: {

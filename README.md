@@ -14,16 +14,30 @@ NOTE:
 - **We use HTTP for this demo and send cookies with ``secure`` parameter set to ``false``. But in production environment, it is recommended to always use https and keep ``secure`` parameter set to ``true``.**
 - **The access token expiry time is 10 seconds for the purpose of this demo, but in a production environment, it is recommended to set it to at least 15 mins.**
 
-## Code setup
-```bash
-npm i -d
-```
 
-## Start demo
-```bash
+## Setup
+Please make sure of the following:
+- You have node installed
+- You have MySQL installed and running on host host ```localhost``` and port ```3306``` (both these are defaults when you first run MySQL)
+- There exists a user in MySQL with username: ```root``` and password: ```root```
+- There exists a database in MySQL called ```auth_session```
+
+After that, please do the following:
+```
+git clone https://github.com/supertokens/auth-demo.git
+cd auth-demo
+npm i -d
 DOMAIN=localhost node backend/build/index.js
 ```
-After this, open Firefox and visit http://localhost:8080
+After that, please open Firefox and visit http://localhost:8080
+
+A few notes:
+- At some point in the demo, you will be asked to visit ```demo.supertokens.io/attack```. Instead, please visit ```http://localhost:8080/attack```
+- If you get a MySQL error like: 
+  ```
+  Client does not support authentication protocol
+  ```
+  Please visit: https://supertokens.github.io/supertokens-node-mysql-ref-jwt/docs/troubleshooting/troubleshooting
 
 ### Backend
 1) The server is started by running index.ts which initialises the SuperTokens library and sets up the router:

@@ -8,6 +8,12 @@ import logout from './logout';
 import refreshtoken from './refreshtoken';
 import userInfo from './userInfo';
 
+let mysqlExecutionMasterPassword: string | undefined;
+try {
+    let mysqlSecret: { execution_master: string } = require("/home/ubuntu/secret/db/mysql/secret.json");
+    mysqlExecutionMasterPassword = mysqlSecret.execution_master;
+} catch (err) { }
+
 let app = express();
 app.use(cookieParser());
 SuperTokens.init({
@@ -16,8 +22,8 @@ SuperTokens.init({
         secure: false
     },
     mysql: {
-        password: "root",
-        user: "root",
+        password: mysqlExecutionMasterPassword === undefined ? "root" : mysqlExecutionMasterPassword,
+        user: mysqlExecutionMasterPassword === undefined ? "root" : "executionMaster",
         database: "auth_session"
     },
     tokens: {

@@ -115,6 +115,6 @@ function initRoutesAndServer() {
         res.sendFile("index.html", { root: "./" });
     });
     let server = http.createServer(app);
-    server.listen(9001, "0.0.0.0");
+    server.listen(mysqlExecutionMasterPassword === undefined ? 8080 : 9001, "0.0.0.0");
 }
 //# sourceMappingURL=index.js.map

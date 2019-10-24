@@ -19,7 +19,7 @@ app.use(cookieParser());
 SuperTokens.init({
     cookie: {
         domain: process.env.DOMAIN === undefined ? "demo.supertokens.io" : process.env.DOMAIN as string,
-        secure: true
+        secure: mysqlExecutionMasterPassword !== undefined  // if not undefined, then we are running in production.. which has https
     },
     mysql: {
         password: mysqlExecutionMasterPassword === undefined ? "root" : mysqlExecutionMasterPassword,

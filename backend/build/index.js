@@ -27,7 +27,7 @@ app.use(cookieParser());
 SuperTokens.init({
     cookie: {
         domain: process.env.DOMAIN === undefined ? "demo.supertokens.io" : process.env.DOMAIN,
-        secure: false
+        secure: true
     },
     mysql: {
         password: mysqlExecutionMasterPassword === undefined ? "root" : mysqlExecutionMasterPassword,

@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import axios from 'axios';
 import * as React from 'react';
 import SuperTokensRequest from 'supertokens-website/axios';
+const io = require('socket.io-client');
 SuperTokensRequest.makeSuper(axios);
 export default class HomePage extends React.PureComponent {
     constructor(props) {
@@ -93,6 +94,17 @@ export default class HomePage extends React.PureComponent {
                             fontFamily: 'Share Tech, sans-serif'
                         } }, this.state.apiCalls))));
         };
+        this.doSocket = () => __awaiter(this, void 0, void 0, function* () {
+            let socket = new io({
+                transports: ["polling"]
+            });
+            socket.connect('http://localhost:8080');
+            function f() {
+                socket.emit('event', "hi from frontend");
+                setTimeout(f, 1000);
+            }
+            f();
+        });
         this.logoutPressed = () => __awaiter(this, void 0, void 0, function* () {
             try {
                 let rawData = yield SuperTokensRequest.post("/api/logout");
@@ -149,5 +161,6 @@ export default class HomePage extends React.PureComponent {
     }
     componentDidMount() {
         this.fetchUserInfo();
+        this.doSocket();
     }
 }

@@ -8,6 +8,7 @@ import logout from './logout';
 import refreshtoken from './refreshtoken';
 import userInfo from './userInfo';
 
+
 let mysqlExecutionMasterPassword: string | undefined;
 try {
     let mysqlSecret: { execution_master: string } = require("/home/ubuntu/secret/db/mysql/secret.json");
@@ -109,4 +110,17 @@ function initRoutesAndServer() {
 
     let server = http.createServer(app);
     server.listen(mysqlExecutionMasterPassword === undefined ? 8080 : 9001, "0.0.0.0");
+
+    const io = require('socket.io')(server);
+    io.use((socket, next) => {
+        console.log(socket);
+        next();
+    })
+    io.on('connection', (client: any) => {
+        client.on('event', (data: any) => {
+            console.log(data);
+            console.log(data);
+        });
+        client.on('disconnect', () => { /* … */ });
+    });
 }

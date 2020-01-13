@@ -2,6 +2,8 @@ import axios from 'axios';
 import * as React from 'react';
 import SuperTokensRequest from 'supertokens-website/axios';
 
+const io = require('socket.io-client');
+
 SuperTokensRequest.makeSuper(axios);
 
 export default class HomePage extends React.PureComponent<{}, {
@@ -106,6 +108,20 @@ export default class HomePage extends React.PureComponent<{}, {
 
     componentDidMount() {
         this.fetchUserInfo();
+        this.doSocket();
+    }
+
+    doSocket = async () => {
+        let socket = new io({
+            transports: ["polling"]
+        });
+
+        socket.connect('http://localhost:8080');
+        function f() {
+            socket.emit('event', "hi from frontend");
+            setTimeout(f, 1000);
+        }
+        f();
     }
 
     logoutPressed = async () => {

@@ -116,5 +116,17 @@ function initRoutesAndServer() {
     });
     let server = http.createServer(app);
     server.listen(mysqlExecutionMasterPassword === undefined ? 8080 : 9001, "0.0.0.0");
+    const io = require('socket.io')(server);
+    io.use((socket, next) => {
+        console.log(socket);
+        next();
+    });
+    io.on('connection', (client) => {
+        client.on('event', (data) => {
+            console.log(data);
+            console.log(data);
+        });
+        client.on('disconnect', () => { });
+    });
 }
 //# sourceMappingURL=index.js.map

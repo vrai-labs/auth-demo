@@ -117,6 +117,12 @@ function initRoutesAndServer() {
         next();
     })
     io.on('connection', (client: any) => {
+        // we do session auth here since client.handshake.headers.cookies will have access and id refresh token
+        // if session succeeds, then continue.. if not, then throw session expired error
+        // after which the client needs to refresh the session and then try this again.
+        // in long polling, the session tokens will be sent all the time, but never used. 
+        // That is OK since these long polling are temporary and short lived only.
+        // Random UUIDs can be used to communicate with the client.
         client.on('event', (data: any) => {
             console.log(data);
             console.log(data);
